@@ -1,17 +1,14 @@
 # My Dev Environment Files 🚀
 
-
-
 ## Keymaps
 
-
+Space (SPC) is my Leader key.
 
 ### Mix
 
 - `<leader>h`: Clear search highlights
 - `<leader>ut`: Switch themes
 - `<leader>?`: Local keymaps
-
 
 ### Buffers
 
@@ -31,7 +28,6 @@
 - `<leader>bP`: Delete non-pinned buffers 
 - `<leader>br`: Delete right buffer 
 
-
 ### File/Find
 
 - `<leader>fb`: Buffers 
@@ -41,7 +37,6 @@
 - `<leader>fr`: Recent 
 - `<leader>fs`: String (cwd) 
 - `<leader>ft`: Find todos 
-
 
 ### Search
 
@@ -58,7 +53,6 @@
 - `<leader>sw`: Word (root) 
 - `<leader>st`: Switch themes 
 
-
 ### Window
 
 - `<leader>wd`: Delete window 
@@ -69,7 +63,6 @@
 - `<leader>wv`: Split window vertically 
 - `<leader>ww`: Switch other window 
 
-
 ### Git
 
 - `<leader>gb`: Branches 
@@ -78,7 +71,6 @@
 - `<leader>gp`: Preview hunk
 - `<leader>gP`: Preview hunk inline
 - `<leader>gs`: Status 
-
 
 ### Test
 
@@ -91,7 +83,6 @@
 - `<leader>tt`: Test nearest 
 - `<leader>tT`: Test all files 
 
-
 ### Org
 
 - `<leader>oe`: Neorg export to file  
@@ -100,14 +91,12 @@
 - `<leader>ot`: Neorg tangle current-file
 - `<leader>ow`: Neorg workspace notes
 
-
 ### Quit/Session
 
 - `<leader>qd`: Delete session
 - `<leader>qq`: Quit all
 - `<leader>qr`: Restore session 
 - `<leader>qs`: Save session
-
 
 ### Quickly-highlight
 
@@ -118,16 +107,12 @@
 - `ghh`: Toggle Highlight word 
 - `ghr`: Reset highlight words 
 
-
 ### Tab
 
 - `<leader><tab><tab>`: New tab
 - `<leader><tab>d`: Delete tab 
 
-
 ### Tmux
-
-
 
 #### Window Management
 
@@ -138,7 +123,6 @@
 - `Ctrl-a ,`: Rename the current window.
 - `Ctrl-a 0-9`: Select the window by number.
 
-
 #### Pane Management
 
 - `Ctrl-a v`: Split the window vertically.
@@ -148,12 +132,10 @@
 - `Ctrl-a x`: Kill the active pane.
 - `Ctrl-a S`: Swap the active pane with the pane above.
 
-
 #### Copy and Paste
 
 - `Ctrl-a [`: Enter copy mode.
 - `Ctrl-a `: Paste the most recent buffer.
-
 
 #### General Operations
 
@@ -162,3 +144,4 @@
 - `Ctrl-a :`: Enter command mode (e.g., to type commands like `kill-server`).
 - `Ctrl-a t`: Show the clock and system information.
 - `Ctrl-a ?`: List all key bindings.
+
