@@ -32,7 +32,7 @@ return {
 			{ "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search highlight groups" },
 			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
 			{ "<leader>sw", "<cmd>Telescope grep_string<cr>", { word_match = "-w" }, desc = "Word (root)" },
-			{ "<leader>st", "<cmd>Telescope themes<cr>", { enable_preview = true }, desc = "Switch themes" },
+			{ "<leader>ut", "<cmd>Telescope themes<cr>", { enable_preview = true }, desc = "Switch themes" },
 			-- git
 			{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
 			{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
@@ -60,7 +60,7 @@ return {
 						buffers = {
 							sort_lastused = true,
 							theme = "dropdown",
-						previewer = true,
+							previewer = true,
 							mappings = {
 								i = {
 									["<C-d>"] = actions.delete_buffer + actions.move_to_top,
