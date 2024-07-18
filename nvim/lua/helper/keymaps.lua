@@ -1,0 +1,49 @@
+vim.g.mapleader = " "
+local map = vim.keymap.set
+
+-- quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+
+-- mix
+map("i", "jk", "<esc>", { desc = "Exit insert mode" })
+map("n", "<leader>h", ":nohl<cr>", { desc = "Clear search highlights" })
+
+-- Move to window using the <ctrl> hjkl keys
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+
+-- window management
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
+map("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically", remap = true })
+map("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally", remap = true })
+map("n", "<leader>ww", "<C-w>w", { desc = "Switch other window", remap = true })
+map("n", "<leader>we", "<C-w>=", { desc = "Make equal windows width", remap = true })
+map("n", "<leader>ws", "<C-w>x", { desc = "Swap window", remap = true })
+map("n", "<leader>w<", "<C-w><", { desc = "Decrease window width", remap = true })
+map("n", "<leader>w>", "<C-w>>", { desc = "Increase window width", remap = true })
+
+-- lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- tabs
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Delete tab" })
+map("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
+map("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- Diagnostic movement
+local diagnostic_goto = function(next, severity)
+	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+	local severity_int = severity and vim.diagnostic.severity[severity] or nil
+	return function()
+		go({ severity = severity_int })
+	end
+end
+map("n", "]d", diagnostic_goto(true), { desc = "Next diagnostic" })
+map("n", "[d", diagnostic_goto(false), { desc = "Prev diagnostic" })
+map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next error" })
+map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev error" })
+map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next warning" })
+map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev warning" })
