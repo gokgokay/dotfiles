@@ -79,7 +79,7 @@ return {
 							["<C-b>"] = actions.preview_scrolling_up,
 						},
 						n = {
-							["esc"] = actions.close,
+							["Esc"] = actions.close,
 						},
 					},
 					extensions = {

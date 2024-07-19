@@ -13,6 +13,14 @@ return {
 			},
 			filters = {
 				dotfiles = false,
+        custom = {
+          ".pytest_cache",
+          ".git",
+          ".venv",
+          "htmlcov",
+          "__pycache__",
+          ".DS_Store",
+        },
 			},
 			renderer = {
 				group_empty = true,
