@@ -16,6 +16,10 @@ return {
 				enable = true,
 			},
 			load = {
+				["core.esupports.indent"] = {
+					format_on_enter = true,
+					format_on_escape = true,
+				},
 				["core.export"] = {},
 				["core.export.markdown"] = {
 					config = {
@@ -23,11 +27,7 @@ return {
 					},
 				},
 				["core.defaults"] = {},
-				["core.keybinds"] = {
-					config = {
-						-- neorg_leader = ",", -- default neorg mapleader
-					},
-				},
+				["core.keybinds"] = {},
 				["core.concealer"] = {
 					config = {
 						icon_preset = "varied",

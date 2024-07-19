@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 local map = vim.keymap.set
 
 -- quit
@@ -7,12 +6,6 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 -- mix
 map("i", "jk", "<esc>", { desc = "Exit insert mode" })
 map("n", "<leader>h", ":nohl<cr>", { desc = "Clear search highlights" })
-
--- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 
 -- window management
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })

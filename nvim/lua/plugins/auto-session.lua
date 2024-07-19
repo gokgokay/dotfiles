@@ -1,5 +1,5 @@
 return {
-{
+	{
 		"rmagatti/auto-session",
 		keys = {
 			{ "<leader>qs", "<cmd>SessionSave<cr>", desc = "Save session" },
@@ -10,7 +10,7 @@ return {
 			log_level = "error",
 			auto_restore_enabled = false,
 			auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      auto_session_pre_save_cmds = { "tabdo NvimTreeClose" }, -- close nvimtree before saving sessions
+			auto_session_pre_save_cmds = { "tabdo NvimTreeClose" }, -- close nvimtree before saving sessions
 		},
 		config = function(_, opts)
 			local autosession = require("auto-session")
