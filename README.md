@@ -1,16 +1,80 @@
 # My Dev Environment Files 🚀
 
-## Keymaps
+## Tmux
+
+### Setup
+
+- [.tmux.conf](.tmux.conf) - Tmux Configuration File
+
+
+### Features
+
+- [tmux-plugins/tpm](https://github.com/tmux-plugins/tpm) - tmux plugin manager 
+- [catppuccin/tmux](https://github.com/catppuccin/tmux) - catppuccin themes such as latte, frappe, macchiato and mocha
+- [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) - Navigating between vim and tmux panes
+- [tmux-plugins/tmux-fpp](https://github.com/tmux-plugins/tmux-fpp) - File explorer for tmux 
+
+
+### Keymaps
+
+#### Window Management
+
+- `C-a c`: Create a new window.
+- `C-a w`: List all windows.
+- `C-a n`: Move to the next window.
+- `C-a p`: Move to the previous window.
+- `C-a ,`: Rename the current window.
+- `C-a 0-9`: Select the window by number.
+
+#### Pane Management
+
+- `C-a V`: Split the window vertically.
+- `C-a H`: Split the window horizontally.
+- `C-a S`: Swap the active pane with the pane above.
+- `C-a o`: Switch to the next pane.
+- `C-a z`: Toggle pane zoom.
+- `C-a x`: Kill the active pane.
+- `C-h`: Navigate left
+- `C-j`: Navigate down
+- `C-k`: Navigate up
+- `C-l`: Navigate right
+
+#### Copy and Paste
+
+- `C-a [`: Enter copy mode.
+- `C-a `: Paste the most recent buffer.
+
+#### General Operations
+
+- `C-a d`: Detach from the session.
+- `C-a $`: Rename the current session.
+- `C-a :`: Enter command mode (e.g., to type commands like `kill-server`).
+- `C-a t`: Show the clock and system information.
+- `C-a ?`: List all key bindings.
+
+
+## Neovim
+
+### Setup
+
+
+### Structure
+
+
+### Features
+
+
+### Keymaps
 
 Space (SPC) is my Leader key.
 
-### Mix
+#### Mix
 
 - `<leader>h`: Clear search highlights
 - `<leader>ut`: Switch themes
 - `<leader>?`: Local keymaps
 
-### Buffers
+#### Buffers
 
 - `<s-l>`: Next buffer
 - `<s-h>`: Prev buffer
@@ -28,7 +92,7 @@ Space (SPC) is my Leader key.
 - `<leader>bP`: Delete non-pinned buffers 
 - `<leader>br`: Delete right buffer 
 
-### File/Find
+#### File/Find
 
 - `<leader>fb`: Buffers 
 - `<leader>fc`: String under cursor (cwd) 
@@ -38,7 +102,7 @@ Space (SPC) is my Leader key.
 - `<leader>fs`: String (cwd) 
 - `<leader>ft`: Find todos 
 
-### Search
+#### Search
 
 - `<leader>s"`: Registers  
 - `<leader>sa`: Auto commands  
@@ -53,7 +117,7 @@ Space (SPC) is my Leader key.
 - `<leader>sw`: Word (root) 
 - `<leader>st`: Switch themes 
 
-### Window
+#### Window
 
 - `<leader>wd`: Delete window 
 - `<leader>we`: Make equal windows width  
@@ -63,7 +127,7 @@ Space (SPC) is my Leader key.
 - `<leader>wv`: Split window vertically 
 - `<leader>ww`: Switch other window 
 
-### Git
+#### Git
 
 - `<leader>gb`: Branches 
 - `<leader>gc`: Commits 
@@ -72,7 +136,7 @@ Space (SPC) is my Leader key.
 - `<leader>gP`: Preview hunk inline
 - `<leader>gs`: Status 
 
-### Test
+#### Test
 
 - `<leader>ta`: Test suite 
 - `<leader>tc`: Run coverage 
@@ -83,7 +147,7 @@ Space (SPC) is my Leader key.
 - `<leader>tt`: Test nearest 
 - `<leader>tT`: Test all files 
 
-### Org
+#### Org
 
 - `<leader>oe`: Neorg export to file  
 - `<leader>ol`: Neorg toc left
@@ -91,14 +155,14 @@ Space (SPC) is my Leader key.
 - `<leader>ot`: Neorg tangle current-file
 - `<leader>ow`: Neorg workspace notes
 
-### Quit/Session
+#### Quit/Session
 
 - `<leader>qd`: Delete session
 - `<leader>qq`: Quit all
 - `<leader>qr`: Restore session 
 - `<leader>qs`: Save session
 
-### Quickly-highlight
+#### Quickly-highlight
 
 - `<S-n>`: Next highlight word 
 - `<S-p>`: Prev highlight word 
@@ -107,41 +171,15 @@ Space (SPC) is my Leader key.
 - `ghh`: Toggle Highlight word 
 - `ghr`: Reset highlight words 
 
-### Tab
+#### Tab
 
 - `<leader><tab><tab>`: New tab
 - `<leader><tab>d`: Delete tab 
 
-### Tmux
+#### Code
 
-#### Window Management
-
-- `Ctrl-a c`: Create a new window.
-- `Ctrl-a w`: List all windows.
-- `Ctrl-a n`: Move to the next window.
-- `Ctrl-a p`: Move to the previous window.
-- `Ctrl-a ,`: Rename the current window.
-- `Ctrl-a 0-9`: Select the window by number.
-
-#### Pane Management
-
-- `Ctrl-a v`: Split the window vertically.
-- `Ctrl-a h`: Split the window horizontally.
-- `Ctrl-a o`: Switch to the next pane.
-- `Ctrl-a z`: Toggle pane zoom.
-- `Ctrl-a x`: Kill the active pane.
-- `Ctrl-a S`: Swap the active pane with the pane above.
-
-#### Copy and Paste
-
-- `Ctrl-a [`: Enter copy mode.
-- `Ctrl-a `: Paste the most recent buffer.
-
-#### General Operations
-
-- `Ctrl-a d`: Detach from the session.
-- `Ctrl-a $`: Rename the current session.
-- `Ctrl-a :`: Enter command mode (e.g., to type commands like `kill-server`).
-- `Ctrl-a t`: Show the clock and system information.
-- `Ctrl-a ?`: List all key bindings.
+- `<leader>cf`: Format buffer
+- `<leader>cl`: Trouble Lsp definitions   
+- `<leader>cm`: Toggle muren   
+- `<leader>cu`: Toggle undotree 
 
