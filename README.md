@@ -2,7 +2,6 @@
 
 ## Relevant Files
 
-
 - [.config/nvim](.config/nvim) - Neovim configuration files
 
 
@@ -38,11 +37,9 @@ brew install ripgrep
 
 ## Plugins 
 
-
-
 ### Plugin Manager
 
-- [folke/lazy.nvim] - 
+- [folke/lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin manager 
 
 
 ### Dependency For Other Plugins
@@ -98,16 +95,8 @@ brew install ripgrep
 
 ### Extras
 
-
-
-#### Coding
-
 - [andythigpen/nvim-coverage](https://github.com/andythigpen/nvim-coverage) - Display test coverage within Neovim
 - [vim-test/vim-test](https://github.com/vim-test/vim-test) - Run tests within Neovim
-
-
-#### Editor 
-
 - [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) - Auto-format specific file types on save.
 - [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Library used by other plugins.
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua) - Fuzzy finder for Neovim with Lua integration.
@@ -118,14 +107,5 @@ brew install ripgrep
 - [mbbill/undotree](https://github.com/mbbill/undotree) - Visualize the undo history.
 - [t9md/vim-quickhl](https://github.com/t9md/vim-quickhl) - Highlight words quickly and navigate between them.
 - [mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) - Multi-cursor support for Vim.
-
-
-#### UI
-
 - [danilamihailov/beacon.nvim](https://github.com/danilamihailov/beacon.nvim) - Highlight cursor when it moves.
-
-
-#### Language
-
 - [linux-cultist/venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim) - Choose what virtual environment to activate.
-
