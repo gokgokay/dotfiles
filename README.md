@@ -3,13 +3,10 @@
 ## Relevant Files
 
 - [.tmux.conf](.tmux.conf) - Tmux configuration file
+- [Keymaps](.config/nvim/README.md) - All the keymaps I use 
 
 
 ## Setup
-
-Before you start, ensure you have the following installed:
-- [Tmux](https://github.com/tmux/tmux/wiki) - You can install it using your package manager `brew install tmux on macOS`
-- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) - TPM is used to manage Tmux plugins.
 
 Install **Tmux:**
 ```bash
@@ -19,14 +16,38 @@ Install **Tmux Plugin Manager (TPM):**
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
-Configure **Tmux:**
-
 Copy the provided Tmux configuration into your .tmux.conf file:
-
+```bash 
+cp path/to/your/.tmux.conf ~/.tmux.conf
+```
 Install **Plugins**
 
-Start a new Tmux session or reload your existing Tmux session. Then press **prefix + I** (where prefix is set to **C-a** in this configuration) to install the plugins listed in your **.tmux.conf** file.
+- Start a new Tmux session or reload your existing Tmux session. Then press **prefix + I** (where prefix is set to **C-a** in this configuration) to install the plugins listed in your **.tmux.conf** file.
 
+
+# Zsh Setup
+
+## Relevant Files
+
+- [.zshrc](.zshrc) - Zsh configuration file 
+
+
+## Setup
+
+This setup guide is for macOS users.
+
+Install **Zsh:**
+```bash
+brew install zsh
+```
+Install **Oh My Zsh:**
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+Copy the provided Zsh configuration into your .zshrc file:
+```bash
+cp path/to/your/.zshrc ~/.zshrc
+```
 
 # Neovim Setup
 
@@ -37,7 +58,7 @@ Start a new Tmux session or reload your existing Tmux session. Then press **pref
 
 ## Setup
 
-**Note:** This setup guide is for macOS users.
+This setup guide is for macOS users.
 
 Install **Homebrew**:
 ```bash 
