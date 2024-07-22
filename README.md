@@ -1,3 +1,33 @@
+# Tmux Setup  
+
+## Relevant Files
+
+- [.tmux.conf](.tmux.conf) - Tmux configuration file
+
+
+## Setup
+
+Before you start, ensure you have the following installed:
+- [Tmux](https://github.com/tmux/tmux/wiki) - You can install it using your package manager `brew install tmux on macOS`
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) - TPM is used to manage Tmux plugins.
+
+Install **Tmux:**
+```bash
+brew install tmux
+```
+Install **Tmux Plugin Manager (TPM):**
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+Configure **Tmux:**
+
+Copy the provided Tmux configuration into your .tmux.conf file:
+
+Install **Plugins**
+
+Start a new Tmux session or reload your existing Tmux session. Then press **prefix + I** (where prefix is set to **C-a** in this configuration) to install the plugins listed in your **.tmux.conf** file.
+
+
 # Neovim Setup
 
 ## Relevant Files
@@ -105,34 +135,3 @@ brew install ripgrep
 - [mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) - Multi-cursor support for Vim.
 - [danilamihailov/beacon.nvim](https://github.com/danilamihailov/beacon.nvim) - Highlight cursor when it moves.
 - [linux-cultist/venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim) - Choose what virtual environment to activate.
-
-
-# Tmux Setup  
-
-## Relevant Files
-
-- [.tmux.conf](.tmux.conf) - Tmux configuration file
-
-
-## Setup
-
-Before you start, ensure you have the following installed:
-- **Tmux:** You can install it using your package manager `brew install tmux on macOS`
-- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm): TPM is used to manage Tmux plugins.
-
-Install **Tmux:**
-```bash
-brew install tmux
-```
-Install **Tmux Plugin Manager (TPM):**
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-Configure **Tmux:**
-
-Copy the provided Tmux configuration into your .tmux.conf file:
-
-**3. Install Plugins**
-
-Start a new Tmux session or reload your existing Tmux session. Then press prefix + I (where prefix is set to C-a in this configuration) to install the plugins listed in your **.tmux.conf** file.
-
