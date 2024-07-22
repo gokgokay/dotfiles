@@ -8,8 +8,8 @@
 ## Setup
 
 **Note:** This setup guide is for macOS users.
-**Homebrew:**
-To install Homebrew, run:
+
+**Homebrew:** To install Homebrew, run:
 ```bash 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
