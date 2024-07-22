@@ -3,6 +3,9 @@ local map = vim.keymap.set
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
+-- file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
 -- mix
 map("i", "jk", "<esc>", { desc = "Exit insert mode" })
 map("n", "<leader>h", ":nohl<cr>", { desc = "Clear search highlights" })
