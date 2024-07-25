@@ -32,13 +32,17 @@ return {
 	{
 		"williamboman/mason.nvim",
 		lazy = false,
-		config = true,
+		config = function()
+			require("mason").setup()
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		config = function()
-			require("mason-lspconfig").setup({ ensure_installed = lsp_servers })
+			require("mason-lspconfig").setup({
+				ensure_installed = lsp_servers,
+			})
 		end,
 	},
 	{
@@ -74,32 +78,29 @@ return {
 					nmap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action")
 					nmap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous diagnostic")
 					nmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next diagnostic")
-					if client ~= nil and client.name == "ruff" then
-						-- Disable hover in favor of Pyright
+					if client ~= nil and client.name == "ruff" then -- Disable hover in favor of Pyright
 						client.server_capabilities.hoverProvider = false
 					end
 				end,
 			})
-
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 			for _, lsp in pairs(lsp_servers) do
 				lspconfig[lsp].setup({
 					capabilites = capabilities,
 				})
 			end
-
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				settings = {
 					pyright = {
-						-- Using Ruff's import organizer
-						disableOrganizeImports = true,
+						disableOrganizeImports = true, -- using Ruff
 					},
 					python = {
 						analaysis = {
 							autoSearchPaths = true,
 							diagnosticMode = "openFilesOnly",
+							useLibraryCodeForTypes = true,
+							typeCheckingMode = "off",
 						},
 						ignore = { "*" },
 					},
@@ -154,7 +155,6 @@ return {
 			})
 		end,
 	},
-
 
 	{
 		"kosayoda/nvim-lightbulb",

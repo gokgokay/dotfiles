@@ -17,6 +17,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias vv="cd dotfiles/.config/nvim/ && nvim"
+alias vd="cd dotfiles/.config/nvim/"
+alias oo="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/ && nvim"
+
 
 # ######################################################################
 # Export 
