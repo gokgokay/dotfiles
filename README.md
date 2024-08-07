@@ -1,6 +1,46 @@
-# Neovim Setup
 <img width="1795" alt="neovim-interface" src="https://github.com/user-attachments/assets/cb6e2553-82e9-4ead-a3fb-796fcbc879db">
 
+# Terminal Setup
+### Relevant Files
+- [.zshrc](.zshrc) - Zsh configuration file
+- [.tmux.conf](.tmux.conf) - Tmux Configuration File
+### Requirements
+- [homebrew](https://brew.sh/) - Package manager for macOS (or Linux)
+- [tmux](https://github.com/tmux/tmux) - Terminal multiplexer
+- [zsh](https://formulae.brew.sh/formula/zsh) - Z shell
+- [ohmyzsh](https://ohmyz.sh/) - Framework for managing Zsh configuration
+
+1. **Backup your current terminal files:**
+```bash
+mv ~/.tmux.conf ~/.tmux.conf.bak
+mv ~/.zshrc ~/.zshrc.bak
+```
+2. **Clone the repository:**
+```bash
+git clone https://github.com/gokgokay/dotfiles.git ~/dotfiles
+```
+3. **Symlink the configuration files:**
+```bash
+ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/.zshrc ~/.zshrc
+```
+4. **Install Nerd Font for better font rendering (optional):**
+```bash
+brew tap homebrew/cask-fonts
+brew install font-meslo-lg-nerd-font
+```
+5. **Install `ripgrep` for efficient search capabilities (optional):**
+```bash
+brew install ripgrep
+```
+6. **Install Tmux Plugin Manager (TPM):**
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+7.  **Start Tmux and install plugins:**
+	Launch tmux and press `prefix + I` (where prefix is set to **C-a** in this configuration) to fetch the plugin dependencies.
+
+# Neovim Setup
 ###  Relevant Files
 - [.config/nvim](.config/nvim) - Neovim configuration files
 ### Requirements
@@ -82,45 +122,6 @@ nvim
 - [mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi) - Multi-cursor support for Vim
 - [danilamihailov/beacon.nvim](https://github.com/danilamihailov/beacon.nvim) - Highlight cursor when it moves
 - [linux-cultist/venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim) - Choose what virtual environment to activate
-# Terminal Setup
-### Relevant Files
-- [.zshrc](.zshrc) - Zsh configuration file
-- [.tmux.conf](.tmux.conf) - Tmux Configuration File
-### Requirements
-- [homebrew](https://brew.sh/) - Package manager for macOS (or Linux)
-- [tmux](https://github.com/tmux/tmux) - Terminal multiplexer
-- [zsh](https://formulae.brew.sh/formula/zsh) - Z shell
-- [ohmyzsh](https://ohmyz.sh/) - Framework for managing Zsh configuration
-
-1. **Backup your current terminal files:**
-```bash
-mv ~/.tmux.conf ~/.tmux.conf.bak
-mv ~/.zshrc ~/.zshrc.bak
-```
-2. **Clone the repository:**
-```bash
-git clone https://github.com/gokgokay/dotfiles.git ~/dotfiles
-```
-3. **Symlink the configuration files:**
-```bash
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-```
-4. **Install Nerd Font for better font rendering (optional):**
-```bash
-brew tap homebrew/cask-fonts
-brew install font-meslo-lg-nerd-font
-```
-5. **Install `ripgrep` for efficient search capabilities (optional):**
-```bash
-brew install ripgrep
-```
-6. **Install Tmux Plugin Manager (TPM):**
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-7.  **Start Tmux and install plugins:**
-	Launch tmux and press `prefix + I` (where prefix is set to **C-a** in this configuration) to fetch the plugin dependencies.
 # File Structure
 <pre>
 dotfiles/
