@@ -117,6 +117,7 @@ plugins=(
   zsh-autosuggestions 
   zsh-syntax-highlighting 
   web-search
+  python 
 )
 
 source $ZSH/oh-my-zsh.sh
