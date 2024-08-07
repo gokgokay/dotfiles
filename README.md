@@ -1,6 +1,6 @@
 # Neovim Setup
-[[neovim_interface.png]]
-###  Relevant Files
+![[neovim_interface.png]]
+	###  Relevant Files
 - [.config/nvim](.config/nvim) - Neovim configuration files
 ### Requirements
 - [Neovim](https://neovim.io/) (Version 0.9 or Later)
