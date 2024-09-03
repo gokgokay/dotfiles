@@ -9,24 +9,20 @@ return {
 	opts = {
 		workspaces = {
 			{
-				name = "personal",
-				path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/",
-			},
-			{
-				name = "work",
+				name = "Notes",
 				path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/",
 			},
 		},
 	},
 	keys = {
 		{ "<leader>nb", ":ObsidianBacklinks<cr>", desc = "Show backlinks" },
-		{ "<leader>nl", ":ObsidianLink<cr>", desc = "Link selection" },
 		{ "<leader>nf", ":ObsidianFollowLink<cr>", desc = "Follow link" },
-		{ "<leader>nn", ":ObsidianNew<cr>", desc = "Create a new note" },
-		{ "<leader>ns", ":ObsidianSearch<cr>", desc = "Search notes" },
-		{ "<leader>no", ":ObsidianQuickSwitch<cr>", desc = "Quickly switch" },
+		{ "<leader>nl", ":ObsidianLink<cr>", desc = "Link selection" },
+		{ "<leader>nn", ":ObsidianQuickSwitch<cr>", desc = "Quickly switch" },
+		{ "<leader>nN", ":ObsidianNew<cr>", desc = "Create a new note" },
 		{ "<leader>nO", ":ObsidianOpen<cr>", desc = "Open in app" },
+		{ "<leader>ns", ":ObsidianSearch<cr>", desc = "Search notes" },
 		{ "<leader>nt", ":ObsidianTags<cr>", desc = "Show tags" },
-		{ "<leader>nw", ":ObsidianWorkspace<cr>", desc = "Swtich workspaces" },
+		{ "<leader>nw", ":ObsidianWorkspace<cr>", desc = "Switch workspaces" },
 	},
 }
