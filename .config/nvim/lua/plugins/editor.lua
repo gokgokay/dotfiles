@@ -1,5 +1,5 @@
 return {
-	-- File explorer
+	-- Show a ile tree explorer
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -16,17 +16,15 @@ return {
 					".DS_Store",
 				},
 			},
-			renderer = {
-				group_empty = true,
-			},
 			actions = {
 				open_file = {
 					quit_on_open = true,
 				},
 			},
-			git = {
-				ignore = false,
-			},
+		},
+		keys = {
+			{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle tree" },
+			{ "<leader>E", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse tree" },
 		},
 		config = function(_, opts)
 			local nvimtree = require("nvim-tree")
@@ -34,10 +32,6 @@ return {
 			vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1
 		end,
-		keys = {
-			{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle tree" },
-			{ "<leader>E", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse tree" },
-		},
 	},
 
 	-- Popup with possible key bindings of the command
@@ -59,8 +53,6 @@ return {
 				{ "<leader>f", group = "file/find" },
 				{ "<leader>g", group = "git" },
 				{ "<leader>n", group = "notes" },
-				{ "<leader>om", group = "metadata" },
-				{ "<leader>oo", group = "toc" },
 				{ "<leader>r", group = "rest" },
 				{ "<leader>s", group = "search" },
 				{ "<leader>t", group = "test" },
@@ -71,19 +63,12 @@ return {
 				-- hide keymaps
 				{ "<leader>e", hidden = true },
 				{ "<leader>E", hidden = true },
-				-- { "<leader>h", hidden = true },
+				{ "<leader>h", hidden = true },
 				{ "<leader>l", hidden = true },
-				-- { "<leader>?", hidden = true },
+				{ "<leader>?", hidden = true },
 				{ "<leader>/", hidden = true },
 			},
 		},
-		config = function(_, opts)
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-			local wk = require("which-key")
-			wk.setup(opts)
-			wk.add(opts.defaults)
-		end,
 		keys = {
 			{
 				"<leader>?",
@@ -93,6 +78,13 @@ return {
 				desc = "Local keymaps",
 			},
 		},
+		config = function(_, opts)
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			local wk = require("which-key")
+			wk.setup(opts)
+			wk.add(opts.defaults)
+		end,
 	},
 
 	-- Fuzzy finder over lists
@@ -174,19 +166,11 @@ return {
 				},
 			}
 		end,
-		config = function(_, opts)
-			local telescope = require("telescope")
-			telescope.setup(opts)
-			telescope.load_extension("fzy_native")
-			telescope.load_extension("themes")
-			telescope.load_extension("frecency")
-			telescope.load_extension("ui-select")
-		end,
 		keys = {
 			{ "<leader>/", "<cmd>Telescope search_history<cr>", desc = "Search history" },
 			-- find
 			{ "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
-			{ "<leader>fc", "<cmd>Telescope grep_string<cr>", desc = "String under cursor (cwd)" },
+			{ "<leader>fc", "<cmd>Telescope grep_string<cr>", desc = "Find config file (cwd)" },
 			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files (root)" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
@@ -209,9 +193,17 @@ return {
 			{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
 			{ "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
 		},
+		config = function(_, opts)
+			local telescope = require("telescope")
+			telescope.setup(opts)
+			telescope.load_extension("fzy_native")
+			telescope.load_extension("themes")
+			telescope.load_extension("frecency")
+			telescope.load_extension("ui-select")
+		end,
 	},
 
-	-- Session management
+	-- session management
 	{
 		"rmagatti/auto-session",
 		opts = {
@@ -220,15 +212,15 @@ return {
 			auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
 			auto_session_pre_save_cmds = { "tabdo NvimTreeClose" }, -- close nvimtree before saving sessions
 		},
-		config = function(_, opts)
-			local autosession = require("auto-session")
-			autosession.setup(opts)
-		end,
 		keys = {
 			{ "<leader>qs", "<cmd>SessionSave<cr>", desc = "Save session" },
 			{ "<leader>qd", "<cmd>SessionDelete<cr>", desc = "Delete session" },
 			{ "<leader>qr", "<cmd>SessionRestore<cr>", desc = "Restore session" },
 		},
+		config = function(_, opts)
+			local autosession = require("auto-session")
+			autosession.setup(opts)
+		end,
 	},
 
 	-- Highlight and search for todo comments
@@ -240,16 +232,16 @@ return {
 		config = true,
 		keys = {
 			{ "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-			{ "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,HACK<cr>", desc = "Todo/fix/hack" },
+			{ "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,HACK<cr>", desc = "Todo/Fix/Hack" },
 			{
-				"]T",
+				"]t",
 				function()
 					require("todo-comments").jump_next()
 				end,
 				desc = "next todo",
 			},
 			{
-				"[T",
+				"[t",
 				function()
 					require("todo-comments").jump_prev()
 				end,
@@ -258,7 +250,7 @@ return {
 		},
 	},
 
-	-- Lists to help you solve all code diagnostics
+	-- Code diagnostics management
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -267,14 +259,9 @@ return {
 		keys = {
 			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
 			{
-				"<leader>xd",
+				"<leader>xX",
 				"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
-				desc = "Document diagnostics",
-			},
-			{
-				"<leader>cl",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-				desc = "[Trouble] LSP Definitions / references /...",
+				desc = "Buffer diagnostics",
 			},
 		},
 	},
@@ -325,9 +312,6 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		opts = {
-			disable_signs = false,
-			disable_context_highlighting = false,
-			disable_commit_confirmation = false,
 			integrations = {
 				diffview = true,
 			},
@@ -344,17 +328,19 @@ return {
 		opts = {
 			yadm = { enable = true },
 		},
+		keys = {
+			{ "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
+			{ "<leader>gP", "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline" },
+		},
 		config = function()
 			require("gitsigns").setup({
 				on_attach = function(bufnr)
 					local gitsigns = require("gitsigns")
-
 					local function map(mode, l, r, opts)
 						opts = opts or {}
 						opts.buffer = bufnr
 						vim.keymap.set(mode, l, r, opts)
 					end
-
 					-- Navigation
 					map("n", "]c", function()
 						if vim.wo.diff then
@@ -374,10 +360,6 @@ return {
 				end,
 			})
 		end,
-		keys = {
-			{ "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
-			{ "<leader>gP", "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline" },
-		},
 	},
 
 	-- Complete parentheses
