@@ -8,7 +8,11 @@ return {
 			options = {
 				try_as_border = true,
 			},
-			draw = { delay = 100 },
+			draw = {
+				animation = function()
+					return 0
+				end,
+			},
 		},
 		init = function()
 			-- disable indentscope for the current filetypes
@@ -29,8 +33,43 @@ return {
 					"Trouble",
 				},
 				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
+					vim.b.miniindentscope_disable = true end,
+			})
+		end,
+	},
+
+	-- Indent blank line
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		enabled = false,
+		main = "ibl",
+		config = function()
+			require("ibl").setup({
+				indent = { char = "▏" },
+				scope = { show_start = false, show_end = false },
+				exclude = {
+					buftypes = {
+						"nofile",
+						"prompt",
+						"quickfix",
+						"terminal",
+					},
+					filetypes = {
+						"aerial",
+						"alpha",
+						"dashboard",
+						"help",
+						"lazy",
+						"mason",
+						"neo-tree",
+						"NvimTree",
+						"neogitstatus",
+						"notify",
+						"startify",
+						"toggleterm",
+						"Trouble",
+					},
+				},
 			})
 		end,
 	},
@@ -79,10 +118,6 @@ return {
 				},
 			}
 		end,
-		config = function(_, opts)
-			local bufferline = require("bufferline")
-			bufferline.setup(opts)
-		end,
 		keys = {
 			{ "<s-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
 			{ "<s-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
@@ -111,6 +146,10 @@ return {
 			{ "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Delete right buffer" },
 			{ "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Delete left buffer" },
 		},
+		config = function(_, opts)
+			local bufferline = require("bufferline")
+			bufferline.setup(opts)
+		end,
 	},
 
 	-- Statusline
@@ -144,7 +183,6 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		lazy = true,
-		opts = {},
 	},
 
 	-- Noice for message, cmdline and popup

@@ -28,6 +28,6 @@ require("lazy").setup({
   {import = "plugins.lsp"},
   {import = "plugins.extras.coding"},
   {import = "plugins.extras.editor"},
-  {import = "plugins.extras.ui"},
+  -- {import = "plugins.extras.ui"},
   {import = "plugins.extras.language.python"},
 })

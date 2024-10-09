@@ -22,8 +22,8 @@ map("n", "<leader>w>", "<C-w>>", { desc = "Increase window width", remap = true 
 -- tabs
 map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Delete tab" })
-map("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
-map("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+-- map("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
+-- map("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- Text Editing
 map("v", "J", ":m '>+1<CR>gv=gv")

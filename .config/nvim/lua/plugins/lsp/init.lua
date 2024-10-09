@@ -20,7 +20,6 @@ local lint_servers = {
 	"prettier",
 	"fixjson",
 	"jq",
-	"ruff",
 	"stylua",
 	"ast-grep",
 }
@@ -59,20 +58,25 @@ return {
 
 			-- Define an on_attach function keybindings, etc.
 			local on_attach = function(client, bufnr)
-				-- Keybindings, etc.
+			-- Keybindings, etc.
 			end
 
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
+				on_attach = on_attach,
 				settings = {
 					pyright = {
 						-- Using Ruff's import organizer
 						disableOrganizeImports = true,
+						autoImportCompletion = true,
 					},
 					python = {
+						pythonPath = vim.fn.exepath("python3"),
 						analaysis = {
 							autoSearchPaths = true,
 							diagnosticMode = "openFilesOnly",
+							-- useLibraryCodeForTypes = true,
+							-- typeCheckingmode = "off",
 						},
 						ignore = { "*" },
 					},
