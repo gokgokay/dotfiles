@@ -7,8 +7,7 @@ return {
 			symbol = "▏",
 			options = {
 				try_as_border = true,
-			},
-			draw = {
+			}, draw = {
 				animation = function()
 					return 0
 				end,
@@ -33,7 +32,8 @@ return {
 					"Trouble",
 				},
 				callback = function()
-					vim.b.miniindentscope_disable = true end,
+					vim.b.miniindentscope_disable = true
+				end,
 			})
 		end,
 	},
@@ -43,34 +43,35 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		enabled = false,
 		main = "ibl",
-		config = function()
-			require("ibl").setup({
-				indent = { char = "▏" },
-				scope = { show_start = false, show_end = false },
-				exclude = {
-					buftypes = {
-						"nofile",
-						"prompt",
-						"quickfix",
-						"terminal",
-					},
-					filetypes = {
-						"aerial",
-						"alpha",
-						"dashboard",
-						"help",
-						"lazy",
-						"mason",
-						"neo-tree",
-						"NvimTree",
-						"neogitstatus",
-						"notify",
-						"startify",
-						"toggleterm",
-						"Trouble",
-					},
+		opts = {
+			indent = { char = "▏" },
+			scope = { show_start = false, show_end = false },
+			exclude = {
+				buftypes = {
+					"nofile",
+					"prompt",
+					"quickfix",
+					"terminal",
 				},
-			})
+				filetypes = {
+					"aerial",
+					"alpha",
+					"dashboard",
+					"help",
+					"lazy",
+					"mason",
+					"neo-tree",
+					"NvimTree",
+					"neogitstatus",
+					"notify",
+					"startify",
+					"toggleterm",
+					"Trouble",
+				},
+			},
+		},
+		config = function(_, opts)
+			require("ibl").setup(opts)
 		end,
 	},
 
@@ -113,6 +114,7 @@ return {
 							filetype = "NvimTree",
 							text = "File Explorer",
 							text_align = "center",
+							highlight = "Directory",
 						},
 					},
 				},
@@ -147,8 +149,14 @@ return {
 			{ "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Delete left buffer" },
 		},
 		config = function(_, opts)
-			local bufferline = require("bufferline")
-			bufferline.setup(opts)
+			require("bufferline").setup(opts)
+			vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+				callback = function()
+					vim.schedule(function()
+						pcall(nvim_bufferline)
+					end)
+				end,
+			})
 		end,
 	},
 
@@ -156,26 +164,36 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
+		opts = function()
 			local catppuccin = require("lualine.themes.catppuccin")
 			catppuccin.normal.c.bg = ""
-			require("lualine").setup({
+			return {
 				options = {
 					theme = catppuccin,
 					section_separators = {
 						left = "",
 						right = "",
 					},
+					globalstatus = vim.o.laststatus == 3,
+					disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter" } },
 				},
-				inactive_sections = {
-					lualine_a = { "filename" },
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = {},
-					lualine_z = { "location" },
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch" },
+					lualine_y = {
+						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+						{ "location", padding = { left = 0, right = 1 } },
+					},
+					lualine_z = {
+						function()
+							return " " .. os.date("%R") -- current time
+						end,
+					},
 				},
-			})
+			}
+		end,
+		config = function(_, opts)
+			require("lualine").setup(opts)
 		end,
 	},
 
@@ -232,10 +250,82 @@ return {
 	-- Stylish vim.notify
 	{
 		"rcarriga/nvim-notify",
+		keys = {
+			{
+				"<leader>un",
+				function()
+					require("notify").dismiss({ silent = true, pending = true })
+				end,
+				desc = "Dismiss all notifications",
+			},
+		},
 		opts = {
 			stages = "static",
 			render = "minimal",
 			timeout = 3000,
 		},
+	},
+
+	-- Fancy start screen
+	{
+		"nvimdev/dashboard-nvim",
+		lazy = false,
+		event = "VimEnter",
+		opts = function()
+			local logo = [[
+        ███████╗██╗  ██╗██╗   ██╗██╗   ██╗██╗███╗   ███╗
+        ██╔════╝██║ ██╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║
+        ███████╗█████╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║
+        ╚════██║██╔═██╗   ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║
+        ███████║██║  ██╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
+        ╚══════╝╚═╝  ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
+      ]]
+			logo = string.rep("\n", 8) .. logo .. "\n\n"
+
+			local opts = {
+				theme = "doom",
+				hide = {
+					statusline = false,
+				},
+				config = {
+					header = vim.split(logo, "\n"),
+					center = {
+						{
+							action = "Telescope find_files",
+							desc = " Find file",
+							icon = " ",
+							key = "f",
+						},
+						{
+							action = "Telescope oldfiles",
+							desc = " Recent files",
+							icon = " ",
+							key = "r",
+						},
+						{
+							action = "Telescope live_grep",
+							desc = " Find text",
+							icon = " ",
+							key = "g",
+						},
+						{
+							action = "Lazy",
+							desc = " Lazy",
+							icon = "󰒲 ",
+							key = "l",
+						},
+						{
+							action = function()
+								vim.api.nvim_input("<cmd>qa<cr>")
+							end,
+							desc = " Quit",
+							icon = " ",
+							key = "q",
+						},
+					},
+				},
+			}
+			return opts
+		end,
 	},
 }
