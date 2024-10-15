@@ -1,3 +1,3 @@
-require("helper.options")
-require("helper.lazy")
-require("helper.keymaps")
+require("config.options")
+require("config.lazy")
+require("config.keymaps")

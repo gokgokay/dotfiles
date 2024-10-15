@@ -2,7 +2,7 @@ return {
 	"ibhagwan/fzf-lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local map = require("helper.util").Map
+		local map = require("config.util").Map
 		local fzf = require("fzf-lua")
 		require("fzf-lua").setup({
 			"fzf-native",

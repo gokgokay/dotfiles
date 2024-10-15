@@ -4,11 +4,9 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
-		dependencies = {
-			"windwp/nvim-ts-autotag",
-		},
+		lazy = vim.fn.argc(-1) == 0,
 		opts = {
-      auto_install = true,
+			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
 			autotag = { enable = true },
@@ -40,10 +38,37 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
+			textobjects = {
+				move = {
+					enable = true,
+					goto_next_start = {
+						["]f"] = "@function.outer",
+						["]c"] = "@class.outer",
+						["]a"] = "@parameter.inner",
+					},
+					goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+					goto_previous_start = {
+						["[f"] = "@function.outer",
+						["[c"] = "@class.outer",
+						["[a"] = "@parameter.inner",
+					},
+					goto_previous_end = {
+						["[F"] = "@function.outer",
+						["[C"] = "@class.outer",
+						["[A"] = "@parameter.inner",
+					},
+				},
+			},
 		},
 		config = function(_, opts)
-			local nt = require("nvim-treesitter.configs")
-			nt.setup(opts)
+			require("nvim-treesitter.configs").setup(opts)
 		end,
+	},
+
+	-- Additional text objects
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = "VeryLazy",
+		enabled = true,
 	},
 }
