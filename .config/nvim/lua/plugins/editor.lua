@@ -63,7 +63,7 @@ return {
 				-- hide keymaps
 				{ "<leader>e", hidden = true },
 				{ "<leader>E", hidden = true },
-				{ "<leader>h", hidden = true },
+				-- { "<leader>h", hidden = true },
 				{ "<leader>l", hidden = true },
 				{ "<leader>?", hidden = true },
 				{ "<leader>/", hidden = true },
@@ -137,7 +137,7 @@ return {
 							["<C-k>"] = actions.move_selection_previous,
 							["<C-j>"] = actions.move_selection_next,
 							["<C-f>"] = actions.preview_scrolling_down,
-							["<C-b>"] = actions.preview_scrolling_up,
+							["<C-d>"] = actions.preview_scrolling_up,
 						},
 						n = {
 							["Esc"] = actions.close,
@@ -159,7 +159,7 @@ return {
 							enable_live_preview = true,
 							persist = {
 								enabled = false,
-								path = vim.fn.stdpath("config") .. "/lua/helper/colorscheme.lua",
+								path = vim.fn.stdpath("config") .. "/lua/config/colorscheme.lua",
 							},
 						},
 					},
@@ -174,7 +174,6 @@ return {
 			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files (root)" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-			{ "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "String (cwd)" },
 			{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
 			-- search
 			{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
@@ -183,6 +182,7 @@ return {
 			{ "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command history" },
 			{ "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
 			{ "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
+			{ "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep (root)" },
 			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help pages" },
 			{ "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search highlight groups" },
 			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
@@ -203,7 +203,7 @@ return {
 		end,
 	},
 
-	-- session management
+	-- Session management
 	{
 		"rmagatti/auto-session",
 		opts = {
@@ -306,7 +306,7 @@ return {
 						vim.keymap.set(mode, l, r, opts)
 					end
 					-- Navigation
-					map("n", "]c", function()
+					map("n", "]g", function()
 						if vim.wo.diff then
 							vim.cmd.normal({ "]c", bang = true })
 						else
@@ -314,7 +314,7 @@ return {
 						end
 					end)
 
-					map("n", "[c", function()
+					map("n", "[g", function()
 						if vim.wo.diff then
 							vim.cmd.normal({ "[c", bang = true })
 						else
@@ -326,34 +326,38 @@ return {
 		end,
 	},
 
-	-- Complete parentheses
-	{
-		"windwp/nvim-autopairs",
-		event = { "InsertEnter" },
-		dependencies = "hrsh7th/nvim-cmp",
-
-		config = function()
-			local npairs = require("nvim-autopairs")
-			npairs.setup({
-				check_ts = true,
-				enable_check_bracket_line = false,
-				ts_config = {
-					lua = { "string" },
-					javascript = { "template_string" },
-					java = false,
-				},
-			})
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			local cmp = require("cmp")
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-		end,
-	},
-
 	-- Surround
 	{
 		"kylechui/nvim-surround",
 		version = "*",
 		event = { "BufReadPre", "BufNewFile" },
 		config = true,
+	},
+
+	-- Navigate your code with search labels, enhanced character motions
+	-- and Treesitter integration.
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		vscode = true,
+		opts = {},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"<C-s>",
+				mode = { "c" },
+				function()
+					require("flash").toggle()
+				end,
+				desc = "Toggle Flash Search",
+			},
+		},
 	},
 }
