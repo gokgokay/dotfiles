@@ -3,10 +3,10 @@ return {
 		"mrjones2014/smart-splits.nvim",
 		event = "VeryLazy",
 		keys = {
-			{ "<A-l>", "<cmd>SmartResizeRight<cr>", desc = "Resize right" },
-			{ "<A-k>", "<cmd>SmartResizeUp<cr>", desc = "Resize up" },
-			{ "<A-j>", "<cmd>SmartResizeDown<cr>", desc = "Resize down" },
-			{ "<A-h>", "<cmd>SmartResizeLeft<cr>", desc = "Resize down" },
+			{ "<A-Right>", "<cmd>SmartResizeRight<cr>", desc = "Resize right" },
+			{ "<A-Up>", "<cmd>SmartResizeUp<cr>", desc = "Resize up" },
+			{ "<A-Down>", "<cmd>SmartResizeDown<cr>", desc = "Resize down" },
+			{ "<A-Left>", "<cmd>SmartResizeLeft<cr>", desc = "Resize left" },
 		},
 	},
 }
