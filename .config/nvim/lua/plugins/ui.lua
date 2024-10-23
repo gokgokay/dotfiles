@@ -7,7 +7,8 @@ return {
 			symbol = "▏",
 			options = {
 				try_as_border = true,
-			}, draw = {
+			},
+			draw = {
 				animation = function()
 					return 0
 				end,
@@ -30,6 +31,7 @@ return {
 					"terminal",
 					"toggleterm",
 					"Trouble",
+					"toggleterm",
 				},
 				callback = function()
 					vim.b.miniindentscope_disable = true
@@ -304,9 +306,15 @@ return {
 						},
 						{
 							action = "Telescope live_grep",
-							desc = " Find text",
+							desc = " Search grep",
 							icon = " ",
 							key = "g",
+						},
+						{
+							action = "Telescope themes",
+							desc = " Switch themes",
+							icon = " ", -- TODO: change icon
+							key = "t",
 						},
 						{
 							action = "Lazy",
