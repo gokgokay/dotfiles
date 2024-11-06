@@ -1,5 +1,5 @@
 return {
-	-- Show a ile tree explorer
+	-- Show a file tree explorer
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -31,6 +31,7 @@ return {
 			nvimtree.setup(opts)
 			vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1
+			vim.opt.termguicolors = true
 		end,
 	},
 
@@ -79,11 +80,11 @@ return {
 			},
 		},
 		config = function(_, opts)
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
 			local wk = require("which-key")
 			wk.setup(opts)
 			wk.add(opts.defaults)
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
 		end,
 	},
 
@@ -238,31 +239,31 @@ return {
 				function()
 					require("todo-comments").jump_next()
 				end,
-				desc = "next todo",
+				desc = "Next todo",
 			},
 			{
 				"[t",
 				function()
 					require("todo-comments").jump_prev()
 				end,
-				desc = "previous todo",
+				desc = "Previous todo",
 			},
 		},
 	},
 
-	-- Code diagnostics management
+	-- Diagnostics management
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		cmd = "Trouble",
 		config = true,
 		keys = {
-			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
 			{
-				"<leader>xX",
+				"<leader>xx",
 				"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
 				desc = "Buffer diagnostics",
 			},
+			{ "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
 		},
 	},
 
@@ -275,6 +276,7 @@ return {
 			"sindrets/diffview.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
+		config = true,
 		opts = {
 			integrations = {
 				diffview = true,
@@ -285,7 +287,7 @@ return {
 		},
 	},
 
-	-- Gitsigns
+	-- Displays code changes with Git
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VimEnter",
@@ -308,15 +310,14 @@ return {
 					-- Navigation
 					map("n", "]g", function()
 						if vim.wo.diff then
-							vim.cmd.normal({ "]c", bang = true })
+							vim.cmd.normal({ "]g", bang = true })
 						else
 							gitsigns.nav_hunk("next")
 						end
 					end)
-
 					map("n", "[g", function()
 						if vim.wo.diff then
-							vim.cmd.normal({ "[c", bang = true })
+							vim.cmd.normal({ "[g", bang = true })
 						else
 							gitsigns.nav_hunk("prev")
 						end
@@ -324,14 +325,6 @@ return {
 				end,
 			})
 		end,
-	},
-
-	-- Surround
-	{
-		"kylechui/nvim-surround",
-		version = "*",
-		event = { "BufReadPre", "BufNewFile" },
-		config = true,
 	},
 
 	-- Navigate your code with search labels, enhanced character motions
@@ -349,14 +342,6 @@ return {
 					require("flash").jump()
 				end,
 				desc = "Flash",
-			},
-			{
-				"<C-s>",
-				mode = { "c" },
-				function()
-					require("flash").toggle()
-				end,
-				desc = "Toggle Flash Search",
 			},
 		},
 	},
