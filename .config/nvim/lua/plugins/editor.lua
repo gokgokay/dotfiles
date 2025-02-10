@@ -46,7 +46,7 @@ return {
 		},
 	},
 
-	-- Session management
+	-- Manage session
 	{
 		"rmagatti/auto-session",
 		opts = {
@@ -75,8 +75,7 @@ return {
 		},
 	},
 
-	-- Managing git repositories directly within the editor
-	-- TODO: complete
+	-- Manage git repositories
 	{
 		"NeogitOrg/neogit",
 		event = "VeryLazy",
@@ -96,8 +95,70 @@ return {
 		},
 	},
 
+	-- Displays code changes
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "VimEnter",
+		opts = {
+			yadm = { enable = true },
+		},
+		keys = {
+			{ "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
+			{ "<leader>gP", "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline" },
+		},
+		config = function()
+			require("gitsigns").setup({
+				on_attach = function(bufnr)
+					local gitsigns = require("gitsigns")
+					local function map(mode, l, r, opts)
+						opts = opts or {}
+						opts.buffer = bufnr
+						vim.keymap.set(mode, l, r, opts)
+					end
+					-- Navigation
+					map("n", "]g", function()
+						if vim.wo.diff then
+							vim.cmd.normal({ "]g", bang = true })
+						else
+							gitsigns.nav_hunk("next")
+						end
+					end)
+					map("n", "[g", function()
+						if vim.wo.diff then
+							vim.cmd.normal({ "[g", bang = true })
+						else
+							gitsigns.nav_hunk("prev")
+						end
+					end)
+				end,
+			})
+		end,
+	},
+
+	-- Manage diagnostics
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = true,
+		opts = {
+			modes = {
+				lsp = {
+					win = { position = "right" },
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+				desc = "Buffer diagnostics",
+			},
+			{ "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
+		},
+	},
+
 	-- Popup with possible key bindings of the command
-	-- TODO: complete
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -126,7 +187,7 @@ return {
 				-- hide keymaps
 				{ "<leader>e", hidden = true },
 				{ "<leader>E", hidden = true },
-				-- { "<leader>h", hidden = true },
+				{ "<leader>h", hidden = true },
 				{ "<leader>l", hidden = true },
 				{ "<leader>?", hidden = true },
 				{ "<leader>/", hidden = true },
@@ -151,7 +212,6 @@ return {
 	},
 
 	-- Fuzzy finder over lists
-	-- TODO: complete
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = { "Telescope", "TodoTelescope" },
@@ -264,64 +324,6 @@ return {
 			telescope.load_extension("themes")
 			telescope.load_extension("frecency")
 			telescope.load_extension("ui-select")
-		end,
-	},
-
-	-- Diagnostics management
-	-- TODO: complete
-	{
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		cmd = "Trouble",
-		config = true,
-		keys = {
-			{
-				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
-				desc = "Buffer diagnostics",
-			},
-			{ "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
-		},
-	},
-
-	-- Displays code changes with Git
-	-- TODO: complete
-	{
-		"lewis6991/gitsigns.nvim",
-		event = "VimEnter",
-		opts = {
-			yadm = { enable = true },
-		},
-		keys = {
-			{ "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
-			{ "<leader>gP", "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline" },
-		},
-		config = function()
-			require("gitsigns").setup({
-				on_attach = function(bufnr)
-					local gitsigns = require("gitsigns")
-					local function map(mode, l, r, opts)
-						opts = opts or {}
-						opts.buffer = bufnr
-						vim.keymap.set(mode, l, r, opts)
-					end
-					-- Navigation
-					map("n", "]g", function()
-						if vim.wo.diff then
-							vim.cmd.normal({ "]g", bang = true })
-						else
-							gitsigns.nav_hunk("next")
-						end
-					end)
-					map("n", "[g", function()
-						if vim.wo.diff then
-							vim.cmd.normal({ "[g", bang = true })
-						else
-							gitsigns.nav_hunk("prev")
-						end
-					end)
-				end,
-			})
 		end,
 	},
 }
