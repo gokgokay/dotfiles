@@ -1,5 +1,5 @@
 return {
-	-- Show a file tree explorer
+	-- File explorer with custom keybindings
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -8,13 +8,7 @@ return {
 				width = 35,
 			},
 			filters = {
-				dotfiles = false,
-				custom = {
-					".pytest_cache",
-					"htmlcov",
-					"__pycache__",
-					".DS_Store",
-				},
+				dotfiles = true,
 			},
 			actions = {
 				open_file = {
@@ -35,7 +29,75 @@ return {
 		end,
 	},
 
+	-- Quick search and jump
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		vscode = true,
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+		},
+	},
+
+	-- Session management
+	{
+		"rmagatti/auto-session",
+		opts = {
+			auto_session_pre_save_cmds = { "tabdo NvimTreeClose" }, -- close nvimtree before saving sessions
+		},
+		keys = {
+			{ "<leader>qs", "<cmd>SessionSave<cr>", desc = "Save session" },
+			{ "<leader>qd", "<cmd>SessionDelete<cr>", desc = "Delete session" },
+			{ "<leader>qr", "<cmd>SessionRestore<cr>", desc = "Restore session" },
+		},
+		config = function(_, opts)
+			local autosession = require("auto-session")
+			autosession.setup(opts)
+		end,
+	},
+
+	-- Highlight and search todo comments
+	{
+		"folke/todo-comments.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true,
+		keys = {
+			{ "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+			{ "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,HACK<cr>", desc = "Todo/Fix/Hack" },
+		},
+	},
+
+	-- Managing git repositories directly within the editor
+	-- TODO: complete
+	{
+		"NeogitOrg/neogit",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		config = true,
+		opts = {
+			integrations = {
+				diffview = true,
+			},
+		},
+		keys = {
+			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+		},
+	},
+
 	-- Popup with possible key bindings of the command
+	-- TODO: complete
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -89,6 +151,7 @@ return {
 	},
 
 	-- Fuzzy finder over lists
+	-- TODO: complete
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = { "Telescope", "TodoTelescope" },
@@ -204,54 +267,8 @@ return {
 		end,
 	},
 
-	-- Session management
-	{
-		"rmagatti/auto-session",
-		opts = {
-			log_level = "error",
-			auto_restore_enabled = false,
-			auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-			auto_session_pre_save_cmds = { "tabdo NvimTreeClose" }, -- close nvimtree before saving sessions
-		},
-		keys = {
-			{ "<leader>qs", "<cmd>SessionSave<cr>", desc = "Save session" },
-			{ "<leader>qd", "<cmd>SessionDelete<cr>", desc = "Delete session" },
-			{ "<leader>qr", "<cmd>SessionRestore<cr>", desc = "Restore session" },
-		},
-		config = function(_, opts)
-			local autosession = require("auto-session")
-			autosession.setup(opts)
-		end,
-	},
-
-	-- Highlight and search for todo comments
-	{
-		"folke/todo-comments.nvim",
-		cmd = { "TodoTrouble", "TodoTelescope" },
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = true,
-		keys = {
-			{ "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-			{ "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,HACK<cr>", desc = "Todo/Fix/Hack" },
-			{
-				"]t",
-				function()
-					require("todo-comments").jump_next()
-				end,
-				desc = "Next todo",
-			},
-			{
-				"[t",
-				function()
-					require("todo-comments").jump_prev()
-				end,
-				desc = "Previous todo",
-			},
-		},
-	},
-
 	-- Diagnostics management
+	-- TODO: complete
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -267,27 +284,8 @@ return {
 		},
 	},
 
-	-- Managing git repositories directly within the editor
-	{
-		"NeogitOrg/neogit",
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		config = true,
-		opts = {
-			integrations = {
-				diffview = true,
-			},
-		},
-		keys = {
-			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
-		},
-	},
-
 	-- Displays code changes with Git
+	-- TODO: complete
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VimEnter",
@@ -325,24 +323,5 @@ return {
 				end,
 			})
 		end,
-	},
-
-	-- Navigate your code with search labels, enhanced character motions
-	-- and Treesitter integration.
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		vscode = true,
-		opts = {},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-		},
 	},
 }
