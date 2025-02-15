@@ -1,16 +1,15 @@
 return {
-	-- By highlighting indentation levels
+	-- Highlight indentation levels
+	-- TODO: complete
 	{
 		"echasnovski/mini.indentscope",
 		enabled = true,
 		opts = {
-			symbol = "▏",
-			options = {
-				try_as_border = true,
-			},
+			symbol = "╎",
 			draw = {
+				delay = 50,
 				animation = function()
-					return 0
+					return 10
 				end,
 			},
 		},
@@ -40,50 +39,15 @@ return {
 		end,
 	},
 
-	-- Indent blank line
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		enabled = false,
-		main = "ibl",
-		opts = {
-			indent = { char = "▏" },
-			scope = { show_start = false, show_end = false },
-			exclude = {
-				buftypes = {
-					"nofile",
-					"prompt",
-					"quickfix",
-					"terminal",
-				},
-				filetypes = {
-					"aerial",
-					"alpha",
-					"dashboard",
-					"help",
-					"lazy",
-					"mason",
-					"neo-tree",
-					"NvimTree",
-					"neogitstatus",
-					"notify",
-					"startify",
-					"toggleterm",
-					"Trouble",
-				},
-			},
-		},
-		config = function(_, opts)
-			require("ibl").setup(opts)
-		end,
-	},
-
 	-- Buffer removing (unshow, delete, wipeout)
+	-- TODO: complete
 	{
 		"echasnovski/mini.bufremove",
 		version = false,
 	},
 
 	-- Bufferline with tabpage integration
+	-- TODO: complete
 	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
@@ -163,6 +127,7 @@ return {
 	},
 
 	-- Statusline
+	-- TODO: complete
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -181,16 +146,13 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch" },
+					lualine_b = { "branch", "diagnostics" },
+					lualine_c = { "filename" },
+					lualine_x = { "fileformat", "filetype" },
 					lualine_y = {
 						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
-						{ "location", padding = { left = 0, right = 1 } },
 					},
-					lualine_z = {
-						function()
-							return " " .. os.date("%R") -- current time
-						end,
-					},
+					lualine_z = { "" },
 				},
 			}
 		end,
@@ -200,12 +162,14 @@ return {
 	},
 
 	-- Stylish vim.u
+	-- TODO: complete
 	{
 		"stevearc/dressing.nvim",
 		lazy = true,
 	},
 
 	-- Noice for message, cmdline and popup
+	-- TODO: complete
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -250,6 +214,7 @@ return {
 	},
 
 	-- Stylish vim.notify
+	-- TODO: complete
 	{
 		"rcarriga/nvim-notify",
 		keys = {
@@ -269,6 +234,7 @@ return {
 	},
 
 	-- Fancy start screen
+	-- TODO: complete
 	{
 		"nvimdev/dashboard-nvim",
 		lazy = false,
