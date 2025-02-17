@@ -1,6 +1,5 @@
 return {
 	-- Highlight indentation levels
-	-- TODO: complete
 	{
 		"echasnovski/mini.indentscope",
 		enabled = true,
@@ -39,15 +38,96 @@ return {
 		end,
 	},
 
-	-- Buffer removing (unshow, delete, wipeout)
-	-- TODO: complete
+	-- Custom configuration with catppuccin theme
 	{
-		"echasnovski/mini.bufremove",
-		version = false,
+		"nvim-lualine/lualine.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		opts = function()
+			local catppuccin = require("lualine.themes.catppuccin")
+			catppuccin.normal.c.bg = ""
+			return {
+				options = {
+					theme = catppuccin,
+					section_separators = { left = "", right = "" },
+					globalstatus = vim.o.laststatus == 3,
+					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch" },
+					lualine_c = { "diagnostics", "filename" },
+					lualine_x = { "fileformat", "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "" },
+				},
+			}
+		end,
+		config = function(_, opts)
+			require("lualine").setup(opts)
+		end,
 	},
 
-	-- Bufferline with tabpage integration
-	-- TODO: complete
+	-- Enhances UI
+	{
+		"stevearc/dressing.nvim",
+		lazy = true,
+	},
+
+	-- Enhances Neovim with custom notifications
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			stages = "static",
+			render = "minimal",
+			timeout = 3000,
+		},
+	},
+
+	-- Replaces Neovim's UI for messages and cmdline
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		opts = {
+			lsp = {
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+			},
+			presets = {
+				bottom_search = true, -- enables classic bottom cmdline for search
+				command_palette = true, -- positions the cmdline and popupmenu together
+				long_message_to_split = true, -- sends long messages to a split view
+				inc_rename = true, -- enables an input dialog for incremental renaming
+			},
+			routes = {
+				{
+					filter = {
+						event = "msg_show",
+						any = {
+							{ find = "%d+L, %d+B" },
+							{ find = "; after #%d+" },
+							{ find = "; before #%d+" },
+						},
+					},
+					view = "mini",
+				},
+			},
+		},
+		config = function(_, opts)
+			if vim.o.filetype == "lazy" then
+				vim.cmd([[messages clear]])
+			end
+			require("noice").setup(opts)
+		end,
+	},
+
+	-- Manage buffers
 	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
@@ -58,8 +138,11 @@ return {
 				highlights = require("catppuccin.groups.integrations.bufferline").get({
 					styles = { "italic", "bold" },
 					custom = {
+						all = {
+							fill = { bg = "#1e2031" }, -- Sets background color to macchiato
+						},
 						macchiato = {
-							background = { fg = macchiato.text },
+							background = { fg = macchiato.text }, -- Sets foreground to macchiato text color
 						},
 					},
 				}),
@@ -115,7 +198,9 @@ return {
 			{ "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Delete left buffer" },
 		},
 		config = function(_, opts)
+			vim.opt.termguicolors = true
 			require("bufferline").setup(opts)
+			-- Fix bufferline when restoring a session
 			vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
 				callback = function()
 					vim.schedule(function()
@@ -126,119 +211,12 @@ return {
 		end,
 	},
 
-	-- Statusline
-	-- TODO: complete
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		opts = function()
-			local catppuccin = require("lualine.themes.catppuccin")
-			catppuccin.normal.c.bg = ""
-			return {
-				options = {
-					theme = catppuccin,
-					section_separators = {
-						left = "",
-						right = "",
-					},
-					globalstatus = vim.o.laststatus == 3,
-					disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter" } },
-				},
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = { "branch", "diagnostics" },
-					lualine_c = { "filename" },
-					lualine_x = { "fileformat", "filetype" },
-					lualine_y = {
-						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
-					},
-					lualine_z = { "" },
-				},
-			}
-		end,
-		config = function(_, opts)
-			require("lualine").setup(opts)
-		end,
-	},
-
-	-- Stylish vim.u
-	-- TODO: complete
-	{
-		"stevearc/dressing.nvim",
-		lazy = true,
-	},
-
-	-- Noice for message, cmdline and popup
-	-- TODO: complete
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-		opts = {
-			lsp = {
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true,
-				},
-			},
-			routes = {
-				{
-					filter = {
-						event = "msg_show",
-						any = {
-							{ find = "%d+L, %d+B" },
-							{ find = "; after #%d+" },
-							{ find = "; before #%d+" },
-						},
-					},
-					view = "mini",
-				},
-			},
-			presets = {
-				bottom_search = true,
-				command_palette = true,
-				long_message_to_split = true,
-				inc_rename = true,
-			},
-		},
-		config = function(_, opts)
-			if vim.o.filetype == "lazy" then
-				vim.cmd([[messages clear]])
-			end
-			require("noice").setup(opts)
-		end,
-	},
-
-	-- Stylish vim.notify
-	-- TODO: complete
-	{
-		"rcarriga/nvim-notify",
-		keys = {
-			{
-				"<leader>un",
-				function()
-					require("notify").dismiss({ silent = true, pending = true })
-				end,
-				desc = "Dismiss all notifications",
-			},
-		},
-		opts = {
-			stages = "static",
-			render = "minimal",
-			timeout = 3000,
-		},
-	},
-
-	-- Fancy start screen
-	-- TODO: complete
+	-- Dashboard with custom logo and shortcuts
 	{
 		"nvimdev/dashboard-nvim",
 		lazy = false,
 		event = "VimEnter",
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 		opts = function()
 			local logo = [[
         ███████╗██╗  ██╗██╗   ██╗██╗   ██╗██╗███╗   ███╗
@@ -258,6 +236,12 @@ return {
 				config = {
 					header = vim.split(logo, "\n"),
 					center = {
+						{
+							action = "Lazy update",
+							desc = " Update plugins",
+							icon = "󰏔 ",
+							key = "u",
+						},
 						{
 							action = "Telescope find_files",
 							desc = " Find file",
@@ -279,7 +263,7 @@ return {
 						{
 							action = "Telescope themes",
 							desc = " Switch themes",
-							icon = " ", -- TODO: change icon
+							icon = " ",
 							key = "t",
 						},
 						{
