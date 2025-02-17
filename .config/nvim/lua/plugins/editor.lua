@@ -21,12 +21,17 @@ return {
 			{ "<leader>E", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse tree" },
 		},
 		config = function(_, opts)
-			local nvimtree = require("nvim-tree")
-			nvimtree.setup(opts)
+			require("nvim-tree").setup(opts)
 			vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1
 			vim.opt.termguicolors = true
 		end,
+	},
+
+	-- Remove buffer (unshow, delete, wipeout)
+	{
+		"echasnovski/mini.bufremove",
+		version = false,
 	},
 
 	-- Quick search and jump
@@ -58,8 +63,7 @@ return {
 			{ "<leader>qr", "<cmd>SessionRestore<cr>", desc = "Restore session" },
 		},
 		config = function(_, opts)
-			local autosession = require("auto-session")
-			autosession.setup(opts)
+			require("auto-session").setup(opts)
 		end,
 	},
 
