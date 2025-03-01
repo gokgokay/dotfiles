@@ -5,13 +5,31 @@ return {
 		event = "InsertEnter",
 		dependencies = "hrsh7th/nvim-cmp",
 		config = function()
+			local npairs = require("nvim-autopairs")
+			npairs.setup({
+				check_ts = true,
+				enable_check_bracket_line = false,
+				ts_config = {
+					lua = { "string" },
+					javascript = { "template_string" },
+					java = false,
+				},
+			})
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
 
+	-- Comment easily
+	{
+		"folke/ts-comments.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+
 	-- Completion of lsp and snippets
+	-- TODO: complete
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -131,13 +149,5 @@ return {
 				},
 			})
 		end,
-	},
-
-	-- Surround
-	{
-		"kylechui/nvim-surround",
-		version = "*",
-		event = { "BufReadPre", "BufNewFile" },
-		config = true,
 	},
 }
