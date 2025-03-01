@@ -25,17 +25,14 @@ return {
 	{
 		"folke/ts-comments.nvim",
 		event = "VeryLazy",
-		opts = {},
 	},
 
-	-- Completion of lsp and snippets
-	-- TODO: complete
+	-- Autocompletion
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
-			--Autocompletion
-			"onsails/lspkind.nvim",
+			-- Autocompletion
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
@@ -51,29 +48,29 @@ return {
 		config = function()
 			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
+			local cmp = require("cmp")
+
 			require("luasnip.loaders.from_lua").lazy_load()
-			-- Set this check up for nvim-cmp tab mapping
+			require("luasnip.loaders.from_vscode").lazy_load()
+
+			-- Check for words before cursor (used for Tab behavior)
 			local has_words_before = function()
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 				return col ~= 0
 					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
-			local cmp = require("cmp")
-			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
 				formatting = {
 					format = lspkind.cmp_format({
 						mode = "symbol_text",
 						symbol_map = {
-							-- Text = "て",
 							Method = "Ⲙ",
 							Class = "Ⲥ",
 							Module = "",
-							File = "", -- 
+							File = "",
 							Reference = "",
 						},
-
 						menu = {
 							buffer = "[buf]",
 							nvim_lsp = "[LSP]",
@@ -85,10 +82,11 @@ return {
 				},
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+						luasnip.lsp_expand(args.body)
 					end,
 				},
 				mapping = {
+					-- Navigate forward in completion
 					["<C-j>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -100,6 +98,8 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
+
+					-- Navigate backward in completion
 					["<C-k>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
@@ -109,14 +109,22 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
+
+					-- Scroll documentation
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+					-- Open/close completion menu
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.close(),
+
+					-- Confirm completion
 					["<CR>"] = cmp.mapping.confirm({
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
+
+					-- Navigate forward in completion
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -129,6 +137,7 @@ return {
 						end
 					end, { "i", "s" }),
 
+					-- Navigate backward in completion
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
@@ -140,7 +149,6 @@ return {
 					end, { "i", "s" }),
 				},
 				sources = {
-					{ name = "nvim_lsp_signature_help" },
 					{ name = "nvim_lsp", keyword_length = 1 },
 					{ name = "nvim_lsp_signature_help" },
 					{ name = "luasnip", keyword_length = 2 },
