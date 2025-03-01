@@ -32,24 +32,20 @@ return {
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
-			-- Autocompletion
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"saadparwaiz1/cmp_luasnip",
 			"lukas-reineke/cmp-under-comparator",
-			-- Snippets
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
-			-- UI
 			"onsails/lspkind.nvim",
 		},
 		config = function()
 			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
 			local cmp = require("cmp")
-
 			require("luasnip.loaders.from_lua").lazy_load()
 			require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -86,7 +82,6 @@ return {
 					end,
 				},
 				mapping = {
-					-- Navigate forward in completion
 					["<C-j>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -98,8 +93,6 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-
-					-- Navigate backward in completion
 					["<C-k>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
@@ -109,22 +102,14 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-
-					-- Scroll documentation
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
-
-					-- Open/close completion menu
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.close(),
-
-					-- Confirm completion
 					["<CR>"] = cmp.mapping.confirm({
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-
-					-- Navigate forward in completion
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -136,8 +121,6 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-
-					-- Navigate backward in completion
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
