@@ -1,10 +1,16 @@
 return {
-	-- Auto-format specific file
+	-- Auto-format files
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
+		default_format_opts = {
+			timeout_ms = 3000,
+			async = false,
+			quiet = false,
+			lsp_format = "fallback",
+		},
 		formatters_by_ft = {
-			python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
+			python = { "isort", "black" },
 			lua = { "stylua" },
 			json = { "prettier" },
 			html = { "prettier" },
@@ -23,10 +29,7 @@ return {
 		{
 			"<leader>cf",
 			function()
-				require("conform").format({
-					async = true,
-					timeout_ms = 3000,
-				})
+				require("conform").format({ formatters = { "injected" } })
 			end,
 			mode = { "n", "v" },
 			desc = "Format buffer",
