@@ -4,19 +4,16 @@ return {
 		"echasnovski/mini.indentscope",
 		enabled = true,
 		opts = {
-			symbol = "╎",
+			symbol = "▏",
+      options = { try_as_border = true },
 			draw = {
-				delay = 50,
-				animation = function()
-					return 10
-				end,
+				delay = 0,
+        animation = function(s) return math.floor(s * 0.7) end,
 			},
 		},
 		init = function()
-			-- disable indentscope for the current filetypes
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = {
-					"alpha",
+      local disabled_ft = {
+          "alpha",
 					"dashboard",
 					"help",
 					"mason",
@@ -30,7 +27,10 @@ return {
 					"toggleterm",
 					"Trouble",
 					"toggleterm",
-				},
+      }
+			-- Disable indentscope for the current filetypes
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = disabled_ft,
 				callback = function()
 					vim.b.miniindentscope_disable = true
 				end,
