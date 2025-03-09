@@ -130,30 +130,31 @@ return {
 	-- Manage buffers
 	{
 		"akinsho/bufferline.nvim",
+		dependencies = { "echasnovski/mini.bufremove" },
 		event = "VeryLazy",
-		dependencies = "echasnovski/mini.bufremove",
+    after = "catppuccin",
 		opts = function()
-			local macchiato = require("catppuccin.palettes").get_palette("macchiato")
+			local palette = require("catppuccin.palettes").get_palette("macchiato")
+      local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({
+        styles = { "italic", "bold" },
+        custom = {
+        all = {
+          fill = { bg = palette.mantle },
+        },
+        macchiato = {
+          background = { fg = palette.text },
+        },
+      },
+      })
 			return {
-				highlights = require("catppuccin.groups.integrations.bufferline").get({
-					styles = { "italic", "bold" },
-					custom = {
-						all = {
-							fill = { bg = "#1e2031" }, -- Sets background color to macchiato
-						},
-						macchiato = {
-							background = { fg = macchiato.text }, -- Sets foreground to macchiato text color
-						},
-					},
-				}),
+        highlights = bufferline_hl,
 				options = {
-					mode = "buffers",
+					diagnostics = "nvim_lsp",
 					enforce_regular_tabs = true,
+					always_show_bufferline = false,
 					show_buffer_icons = true,
 					show_close_icon = false,
 					show_buffer_close_icons = false,
-					always_show_bufferline = false,
-					diagnostics = "nvim_lsp",
 					max_name_length = 18,
 					max_prefix_length = 15,
 					tab_size = 18,
@@ -164,43 +165,50 @@ return {
 							text = "File Explorer",
 							text_align = "center",
 							highlight = "Directory",
+              padding = 1
 						},
 					},
 				},
 			}
 		end,
 		keys = {
-			{ "<s-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+      -- Buffer navigation
+      { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
 			{ "<s-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-			{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-			{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-			{ "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
-			{ "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+      { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+      { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
+
+      -- Buffer reordering
+      { "<leader>bmj", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
+      { "<leader>bmk", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
+
+      -- Buffer management
 			{ "<leader>bb", "<cmd>e #<cr>", desc = "Switch buffer" },
 			{
-				"<leader>bd",
+				"<leader>bc",
 				function()
 					require("mini.bufremove").delete(0, false)
 				end,
-				desc = "Delete buffer",
+				desc = "Close buffer",
 			},
 			{
-				"<leader>bD",
+				"<leader>bC",
 				function()
 					require("mini.bufremove").delete(0, true)
 				end,
-				desc = "Delete buffer (Force)",
+				desc = "Forse close buffer",
 			},
-			{ "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Delete other buffers" },
-			{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Delete non-pinned buffers" },
+			{ "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close other buffers" },
 			{ "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle pin buffer" },
-			{ "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Delete right buffer" },
-			{ "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Delete left buffer" },
+			{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Close non-pinned buffers" },
+			{ "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Close right buffer" },
+			{ "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Close left buffer" },
 		},
 		config = function(_, opts)
 			vim.opt.termguicolors = true
 			require("bufferline").setup(opts)
-			-- Fix bufferline when restoring a session
+
+      -- Auto-refresh bufferline on buffer changes
 			vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
 				callback = function()
 					vim.schedule(function()
