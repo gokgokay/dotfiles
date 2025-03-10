@@ -7,9 +7,9 @@ return {
 			symbol = "▏",
 			options = { try_as_border = true },
 			draw = {
-				delay = 0,
-				animation = function(s)
-					return math.floor(s * 1)
+				delay = 50,
+				animation = function()
+					return 10
 				end,
 			},
 		},

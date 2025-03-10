@@ -29,14 +29,13 @@ return {
 		{
 			"<leader>cf",
 			function()
-				require("conform").format({ formatters = { "injected" } })
+				require("conform").format({})
 			end,
 			mode = { "n", "v" },
 			desc = "Format buffer",
 		},
 	},
 	config = function(_, opts)
-		local conform = require("conform")
-		conform.setup(opts)
+		require("conform").setup(opts)
 	end,
 }
