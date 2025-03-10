@@ -1,5 +1,5 @@
 return {
-	-- File explorer with custom keybindings
+	-- File explorer 
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -177,6 +177,7 @@ return {
 				{ "gh", group = "highlights" },
 				{ "<leader><tab>", group = "tabs" },
 				{ "<leader>b", group = "buffers" },
+				{ "<leader>bm", group = "move" },
 				{ "<leader>c", group = "code" },
 				{ "<leader>f", group = "file/find" },
 				{ "<leader>g", group = "git" },

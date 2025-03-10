@@ -5,29 +5,31 @@ return {
 		enabled = true,
 		opts = {
 			symbol = "▏",
-      options = { try_as_border = true },
+			options = { try_as_border = true },
 			draw = {
 				delay = 0,
-        animation = function(s) return math.floor(s * 0.7) end,
+				animation = function(s)
+					return math.floor(s * 1)
+				end,
 			},
 		},
 		init = function()
-      local disabled_ft = {
-          "alpha",
-					"dashboard",
-					"help",
-					"mason",
-					"notify",
-					"NvimTree",
-					"neo-tree",
-					"lazy",
-					"checkhealth",
-					"mason",
-					"terminal",
-					"toggleterm",
-					"Trouble",
-					"toggleterm",
-      }
+			local disabled_ft = {
+				"alpha",
+				"dashboard",
+				"help",
+				"mason",
+				"notify",
+				"NvimTree",
+				"neo-tree",
+				"lazy",
+				"checkhealth",
+				"mason",
+				"terminal",
+				"toggleterm",
+				"Trouble",
+				"toggleterm",
+			}
 			-- Disable indentscope for the current filetypes
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = disabled_ft,
@@ -41,25 +43,29 @@ return {
 	-- Custom configuration with catppuccin theme
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"arkav/lualine-lsp-progress",
+		},
 		opts = function()
-			local catppuccin = require("lualine.themes.catppuccin")
-			catppuccin.normal.c.bg = ""
+			local palette = require("lualine.themes.catppuccin")
+			palette.normal.c.bg = ""
 			return {
 				options = {
-					theme = catppuccin,
+					theme = palette,
 					section_separators = { left = "", right = "" },
 					globalstatus = vim.o.laststatus == 3,
 					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch" },
+					lualine_b = { "branch", "diff" },
 					lualine_c = { "diagnostics", "filename" },
-					lualine_x = { "fileformat", "filetype" },
-					lualine_y = { "progress" },
-					lualine_z = { "" },
+					lualine_x = { "fileformat" },
+					lualine_y = { "progress", "location" },
+					lualine_z = { { "datetime", style = "%H:%M" } },
 				},
+				extensions = { "neo-tree", "nvim-tree", "toggleterm", "quickfix" },
 			}
 		end,
 		config = function(_, opts)
@@ -67,13 +73,13 @@ return {
 		end,
 	},
 
-	-- Enhances UI
+	-- Improved UI for input and select dialogs
 	{
 		"stevearc/dressing.nvim",
 		lazy = true,
 	},
 
-	-- Enhances Neovim with custom notifications
+	-- Modern and minimal notification system
 	{
 		"rcarriga/nvim-notify",
 		opts = {
@@ -100,10 +106,10 @@ return {
 				},
 			},
 			presets = {
-				bottom_search = true, -- enables classic bottom cmdline for search
-				command_palette = true, -- positions the cmdline and popupmenu together
-				long_message_to_split = true, -- sends long messages to a split view
-				inc_rename = true, -- enables an input dialog for incremental renaming
+				bottom_search = true,
+				command_palette = true,
+				long_message_to_split = true,
+				inc_rename = true,
 			},
 			routes = {
 				{
@@ -132,22 +138,22 @@ return {
 		"akinsho/bufferline.nvim",
 		dependencies = { "echasnovski/mini.bufremove" },
 		event = "VeryLazy",
-    after = "catppuccin",
+		after = "catppuccin",
 		opts = function()
 			local palette = require("catppuccin.palettes").get_palette("macchiato")
-      local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({
-        styles = { "italic", "bold" },
-        custom = {
-        all = {
-          fill = { bg = palette.mantle },
-        },
-        macchiato = {
-          background = { fg = palette.text },
-        },
-      },
-      })
+			local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({
+				styles = { "italic", "bold" },
+				custom = {
+					all = {
+						fill = { bg = palette.mantle },
+					},
+					macchiato = {
+						background = { fg = palette.text },
+					},
+				},
+			})
 			return {
-        highlights = bufferline_hl,
+				highlights = bufferline_hl,
 				options = {
 					diagnostics = "nvim_lsp",
 					enforce_regular_tabs = true,
@@ -165,24 +171,22 @@ return {
 							text = "File Explorer",
 							text_align = "center",
 							highlight = "Directory",
-              padding = 1
+							padding = 1,
 						},
 					},
 				},
 			}
 		end,
 		keys = {
-      -- Buffer navigation
-      { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+			-- Buffer navigation
+			{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
 			{ "<s-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-      { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-      { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
-
-      -- Buffer reordering
-      { "<leader>bmj", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
-      { "<leader>bmk", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
-
-      -- Buffer management
+			{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+			{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
+			-- Buffer reordering
+			{ "<leader>bmj", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
+			{ "<leader>bmk", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
+			-- Buffer management
 			{ "<leader>bb", "<cmd>e #<cr>", desc = "Switch buffer" },
 			{
 				"<leader>bc",
@@ -207,8 +211,7 @@ return {
 		config = function(_, opts)
 			vim.opt.termguicolors = true
 			require("bufferline").setup(opts)
-
-      -- Auto-refresh bufferline on buffer changes
+			-- Auto-refresh bufferline on buffer changes
 			vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
 				callback = function()
 					vim.schedule(function()
