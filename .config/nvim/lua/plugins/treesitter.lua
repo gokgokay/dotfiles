@@ -1,5 +1,5 @@
 return {
-	-- Parsing and syntax highlighting engine
+	-- Syntax highlighting and text manipulation engine
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile" },
@@ -7,8 +7,14 @@ return {
 		lazy = vim.fn.argc(-1) == 0,
 		opts = {
 			auto_install = true,
-			highlight = { enable = true },
-			indent = { enable = true },
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
+			},
+			indent = {
+				enable = true,
+				disable = { "python" },
+			},
 			autotag = { enable = true },
 			ensure_installed = {
 				"python",
@@ -46,16 +52,10 @@ return {
 						["]c"] = "@class.outer",
 						["]a"] = "@parameter.inner",
 					},
-					goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
 					goto_previous_start = {
 						["[f"] = "@function.outer",
 						["[c"] = "@class.outer",
 						["[a"] = "@parameter.inner",
-					},
-					goto_previous_end = {
-						["[F"] = "@function.outer",
-						["[C"] = "@class.outer",
-						["[A"] = "@parameter.inner",
 					},
 				},
 			},
@@ -71,4 +71,11 @@ return {
 		event = "VeryLazy",
 		enabled = true,
 	},
+
+  -- Automatically add closing tags for HTML and JSX
+  {
+    "windwp/nvim-ts-autotag",
+    event = "LazyFile",
+    opts = {},
+  },
 }
