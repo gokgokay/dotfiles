@@ -1,5 +1,5 @@
 return {
-	-- File explorer 
+	-- File explorer
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -21,10 +21,10 @@ return {
 			{ "<leader>E", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse tree" },
 		},
 		config = function(_, opts)
+			require("nvim-tree").setup(opts)
 			vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1
 			vim.opt.termguicolors = true
-			require("nvim-tree").setup(opts)
 		end,
 	},
 
@@ -55,12 +55,16 @@ return {
 	{
 		"rmagatti/auto-session",
 		opts = {
-			auto_session_pre_save_cmds = { "tabdo NvimTreeClose" }, -- close nvimtree before saving sessions
+			pre_save_cmds = {
+				"tabdo NvimTreeClose",
+				"tabdo TroubleClose",
+			},
 		},
 		keys = {
 			{ "<leader>qs", "<cmd>SessionSave<cr>", desc = "Save session" },
 			{ "<leader>qd", "<cmd>SessionDelete<cr>", desc = "Delete session" },
 			{ "<leader>qr", "<cmd>SessionRestore<cr>", desc = "Restore session" },
+      { "<leader>qf", "<cmd>SessionSearch<cr>", desc = "Find session" }
 		},
 		config = function(_, opts)
 			require("auto-session").setup(opts)
@@ -189,7 +193,7 @@ return {
 				{ "<leader>u", group = "ui" },
 				{ "<leader>q", group = "quit/session" },
 				{ "<leader>x", group = "diagnostics" },
-				-- hide keymaps
+				-- Hide keymaps
 				{ "<leader>e", hidden = true },
 				{ "<leader>E", hidden = true },
 				{ "<leader>h", hidden = true },
