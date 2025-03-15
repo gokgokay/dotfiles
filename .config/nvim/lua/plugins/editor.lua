@@ -64,7 +64,7 @@ return {
 			{ "<leader>qs", "<cmd>SessionSave<cr>", desc = "Save session" },
 			{ "<leader>qd", "<cmd>SessionDelete<cr>", desc = "Delete session" },
 			{ "<leader>qr", "<cmd>SessionRestore<cr>", desc = "Restore session" },
-      { "<leader>qf", "<cmd>SessionSearch<cr>", desc = "Find session" }
+			{ "<leader>qf", "<cmd>SessionSearch<cr>", desc = "Find session" },
 		},
 		config = function(_, opts)
 			require("auto-session").setup(opts)
@@ -308,6 +308,7 @@ return {
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
 			{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
+
 			-- search
 			{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
 			{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto commands" },
