@@ -18,7 +18,6 @@ return {
 		},
 		keys = {
 			{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle tree" },
-			{ "<leader>E", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse tree" },
 		},
 		config = function(_, opts)
 			require("nvim-tree").setup(opts)
@@ -195,8 +194,6 @@ return {
 				{ "<leader>x", group = "diagnostics" },
 				-- Hide keymaps
 				{ "<leader>e", hidden = true },
-				{ "<leader>E", hidden = true },
-				{ "<leader>h", hidden = true },
 				{ "<leader>l", hidden = true },
 				{ "<leader>?", hidden = true },
 				{ "<leader>/", hidden = true },
@@ -322,6 +319,7 @@ return {
 			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
 			{ "<leader>sw", "<cmd>Telescope grep_string<cr>", { word_match = "-w" }, desc = "Word (root)" },
 			{ "<leader>ut", "<cmd>Telescope themes<cr>", { enable_preview = true }, desc = "Switch themes" },
+
 			-- git
 			{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
 			{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },

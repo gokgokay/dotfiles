@@ -180,7 +180,7 @@ return {
 		keys = {
 			-- Buffer navigation
 			{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-			{ "<s-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+			{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
 			{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
 			{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
 			-- Buffer reordering
@@ -189,11 +189,11 @@ return {
 			-- Buffer management
 			{ "<leader>bb", "<cmd>e #<cr>", desc = "Switch buffer" },
 			{
-				"<leader>bc",
+				"<leader>bd",
 				function()
 					require("mini.bufremove").delete(0, false)
 				end,
-				desc = "Close buffer",
+				desc = "Delete buffer",
 			},
 			{
 				"<leader>bC",

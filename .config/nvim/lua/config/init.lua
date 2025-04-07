@@ -19,9 +19,8 @@ end
 
 require("lazy").setup({
 	{ import = "plugins" },
-	{ import = "plugins.lsp" },
 	{ import = "plugins.extras.coding" },
 	{ import = "plugins.extras.editor" },
 	{ import = "plugins.extras.dap" },
-	{ import = "plugins.extras.language.python" },
+	{ import = "plugins.extras.language" },
 })
