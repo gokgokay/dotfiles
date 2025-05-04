@@ -30,6 +30,7 @@ bindkey -v
 # Export variables 
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR='nvim'
+export PATH="/usr/local/opt/postgresql/bin:$PATH"
 
 # Set theme
 ZSH_THEME="powerlevel10k/powerlevel10k"

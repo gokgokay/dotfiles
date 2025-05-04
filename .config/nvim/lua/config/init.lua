@@ -23,4 +23,5 @@ require("lazy").setup({
 	{ import = "plugins.extras.editor" },
 	{ import = "plugins.extras.dap" },
 	{ import = "plugins.extras.language" },
+	{ import = "plugins.lsp.init" },
 })

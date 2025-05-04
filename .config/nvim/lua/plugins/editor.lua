@@ -70,7 +70,7 @@ return {
 		end,
 	},
 
-	-- Highlight and search todo comments
+  -- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -305,7 +305,6 @@ return {
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
 			{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
-
 			-- search
 			{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
 			{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto commands" },
@@ -319,7 +318,6 @@ return {
 			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
 			{ "<leader>sw", "<cmd>Telescope grep_string<cr>", { word_match = "-w" }, desc = "Word (root)" },
 			{ "<leader>ut", "<cmd>Telescope themes<cr>", { enable_preview = true }, desc = "Switch themes" },
-
 			-- git
 			{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
 			{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },

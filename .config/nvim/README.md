@@ -115,4 +115,3 @@ Space (SPC) is my Leader key.
 - `<leader>cf`: Format buffer
 - `<leader>cl`: Trouble Lsp definitions   
 - `<leader>cm`: Toggle muren   
-- `<leader>cu`: Toggle undotree 
