@@ -53,24 +53,18 @@ return {
 	-- Manage session
 	{
 		"rmagatti/auto-session",
-		opts = {
-			pre_save_cmds = {
-				"tabdo NvimTreeClose",
-				"tabdo TroubleClose",
-			},
-		},
 		keys = {
 			{ "<leader>qs", "<cmd>SessionSave<cr>", desc = "Save session" },
 			{ "<leader>qd", "<cmd>SessionDelete<cr>", desc = "Delete session" },
 			{ "<leader>qr", "<cmd>SessionRestore<cr>", desc = "Restore session" },
 			{ "<leader>qf", "<cmd>SessionSearch<cr>", desc = "Find session" },
 		},
-		config = function(_, opts)
-			require("auto-session").setup(opts)
+		config = function()
+			require("auto-session").setup()
 		end,
 	},
 
-  -- Highlight todo, notes, etc in comments
+	-- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
 		event = { "BufReadPre", "BufNewFile" },
