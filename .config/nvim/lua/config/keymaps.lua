@@ -61,3 +61,6 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev warning" })
 -- Commenting
 map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
 map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
+-- Copy entire buffer
+vim.keymap.set("n", "<leader><space>", "ggVGy", { desc = "Copy entire buffer" })
