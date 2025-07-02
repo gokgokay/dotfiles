@@ -71,8 +71,6 @@ return {
 			{ "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close other buffers" },
 			{ "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle pin buffer" },
 			{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Close non-pinned buffers" },
-			{ "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Close right buffer" },
-			{ "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Close left buffer" },
 		},
 		config = function(_, opts)
 			vim.opt.termguicolors = true
