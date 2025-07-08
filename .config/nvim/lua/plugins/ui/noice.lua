@@ -1,5 +1,5 @@
 return {
-	-- Enhance UI for messages and LSP
+	-- Modern UI for messages, LSP, command-line and notifications
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -16,11 +16,31 @@ return {
 				},
 			},
 			presets = {
-				bottom_search = true, -- use a classic bottom cmdline for search
-				command_palette = true, -- position the cmdline and popupmenu together
-				long_message_to_split = true, -- long messages will be sent to a split
-				inc_rename = false, -- enables an input dialog for inc-rename.nvim
-				lsp_doc_border = false, -- add a border to hover docs and signature help
+				bottom_search = true,
+				command_palette = true,
+				long_message_to_split = true,
+				inc_rename = false,
+				lsp_doc_border = false,
+			},
+			views = {
+				cmdline_popup = {
+					size = {
+						width = 60,
+						height = "auto",
+					},
+					border = {
+						style = "none",
+						padding = { 1, 1 },
+					},
+					filter_options = {},
+					win_options = {
+						winblend = 0,
+						winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+					},
+				},
+				notify = {
+					replace = true,
+				},
 			},
 			routes = {
 				{
@@ -37,6 +57,7 @@ return {
 			},
 		},
 		config = function(_, opts)
+			-- Clear messages on lazy.nvim startup
 			if vim.o.filetype == "lazy" then
 				vim.cmd([[messages clear]])
 			end

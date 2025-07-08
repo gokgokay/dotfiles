@@ -2,6 +2,8 @@ return {
 	-- Statusline customization
 	{
 		"nvim-lualine/lualine.nvim",
+		lazy = false,
+		event = "VimEnter",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"arkav/lualine-lsp-progress",
@@ -10,14 +12,14 @@ return {
 			return {
 				options = {
 					theme = "auto",
-					section_separators = { left = "", right = "" },
-					globalstatus = vim.o.laststatus == 3,
-					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = { statusline = { "dashboard", "alpha", "lazy" } },
+					globalstatus = true,
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff" },
-					lualine_c = { "diagnostics", "filename" },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = { "filename" },
 					lualine_x = { "fileformat" },
 					lualine_y = { "progress", "location" },
 					lualine_z = { { "datetime", style = "%H:%M" } },

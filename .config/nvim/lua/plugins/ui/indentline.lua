@@ -18,7 +18,6 @@ return {
 				"alpha",
 				"dashboard",
 				"help",
-				"mason",
 				"notify",
 				"NvimTree",
 				"neo-tree",
@@ -26,11 +25,10 @@ return {
 				"checkhealth",
 				"mason",
 				"terminal",
-				"toggleterm",
 				"Trouble",
 				"toggleterm",
 			}
-			-- disable indentscope for the current filetypes
+			-- Disable indentscope for the specified filetypes
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = disabled_ft,
 				callback = function()

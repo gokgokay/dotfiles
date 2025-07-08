@@ -7,18 +7,16 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 
 		opts = function()
-			-- logo
 			local logo = [[
-██╗      █████╗ ███████╗██╗   ██╗██████╗  ██████╗ ██╗██╗
-██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██╔══██╗██╔═══██╗██║██║
-██║     ███████║  ███╔╝  ╚████╔╝ ██████╔╝██║   ██║██║██║
-██║     ██╔══██║ ███╔╝    ╚██╔╝  ██╔══██╗██║   ██║██║██║
-███████╗██║  ██║███████╗   ██║   ██████╔╝╚██████╔╝██║██║
-╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═════╝  ╚═════╝ ╚═╝╚═╝
+██╗   ██╗██╗███╗   ███╗
+██║   ██║██║████╗ ████║
+██║   ██║██║██╔████╔██║
+╚██╗ ██╔╝██║██║╚██╔╝██║
+ ╚████╔╝ ██║██║ ╚═╝ ██║
+  ╚═══╝  ╚═╝╚═╝     ╚═╝
       ]]
 			logo = string.rep("\n", 8) .. logo .. "\n\n"
 
-			-- menu items
 			local menu = {
 				{ icon = "󰏔 ", desc = " Update plugins", action = "Lazy update", key = "u" },
 				{ icon = " ", desc = " Find file", action = "Telescope find_files", key = "f" },
@@ -37,11 +35,6 @@ return {
 			}
 			return {
 				theme = "doom",
-				hide = {
-					statusline = false,
-					tabline = false,
-					winbar = false,
-				},
 				config = {
 					header = vim.split(logo, "\n"),
 					center = menu,
