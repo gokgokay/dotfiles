@@ -1,5 +1,5 @@
 return {
-	-- Auto-format files
+	-- Autoformat
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
