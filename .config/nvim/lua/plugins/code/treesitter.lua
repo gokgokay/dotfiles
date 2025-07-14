@@ -15,7 +15,6 @@ return {
 				enable = true,
 				disable = { "python" },
 			},
-			autotag = { enable = true },
 			ensure_installed = {
 				"python",
 				"lua",
@@ -40,23 +39,7 @@ return {
 				keymaps = {
 					init_selection = "<C-space>",
 					node_incremental = "<C-space>",
-					scope_incremental = false,
 					node_decremental = "<bs>",
-				},
-			},
-			textobjects = {
-				move = {
-					enable = true,
-					goto_next_start = {
-						["]f"] = "@function.outer",
-						["]c"] = "@class.outer",
-						["]a"] = "@parameter.inner",
-					},
-					goto_previous_start = {
-						["[f"] = "@function.outer",
-						["[c"] = "@class.outer",
-						["[a"] = "@parameter.inner",
-					},
 				},
 			},
 		},
@@ -69,12 +52,5 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = "VeryLazy",
-		enabled = true,
 	},
-
-  -- Automatically add closing tags for HTML and JSX
-  {
-    "windwp/nvim-ts-autotag",
-    opts = {},
-  },
 }
