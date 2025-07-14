@@ -2,6 +2,7 @@ return {
 	-- Python virtual environment selector
 	{
 		"linux-cultist/venv-selector.nvim",
+		version = "*",
 		ft = "python",
 		dependencies = {
 			"neovim/nvim-lspconfig",
@@ -48,7 +49,7 @@ return {
 				"williamboman/mason-lspconfig.nvim",
 				opts = {
 					ensure_installed = { "pyright", "ruff" },
-					automatic_installation = true,
+					automatic_enable = false,
 				},
 			},
 		},
@@ -81,8 +82,8 @@ return {
 		},
 		config = function(_, opts)
 			local lspconfig = require("lspconfig")
-			for server, config in pairs(opts.servers) do
-				lspconfig[server].setup(config)
+			for server, server_opts in pairs(opts.servers) do
+				lspconfig[server].setup(server_opts)
 			end
 		end,
 	},

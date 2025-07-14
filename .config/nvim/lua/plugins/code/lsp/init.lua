@@ -56,13 +56,6 @@ return {
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-			vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-			vim.keymap.set(
-				"n",
-				"<leader>D",
-				"<cmd>Telescope diagnostics bufnr=0<CR>",
-				{ desc = "Show buffer diagnostics" }
-			)
 		end,
 	},
 }
