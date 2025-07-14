@@ -5,13 +5,6 @@ return {
 		cmd = "Trouble",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = true,
-		opts = {
-			modes = {
-				lsp = {
-					win = { position = "right" },
-				},
-			},
-		},
 		keys = {
 			{
 				"<leader>xx",

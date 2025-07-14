@@ -1,5 +1,7 @@
 return {
+	-- Tmux integration
 	"christoomey/vim-tmux-navigator",
+	event = "VeryLazy",
 	keys = {
 		{ "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
 		{ "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },

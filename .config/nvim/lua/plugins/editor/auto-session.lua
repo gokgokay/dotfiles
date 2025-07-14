@@ -2,7 +2,6 @@ return {
 	-- Session management
 	{
 		"rmagatti/auto-session",
-		event = "VimEnter",
 		opts = {
 			bypass_save_filetypes = { "alpha", "dashboard" },
 		},

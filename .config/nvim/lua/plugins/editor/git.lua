@@ -8,12 +8,7 @@ return {
 			"sindrets/diffview.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-		opts = {
-			integrations = {
-				diffview = true,
-			},
-			use_magit_keybindings = true,
-		},
+		config = true,
 		keys = {
 			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
 		},
