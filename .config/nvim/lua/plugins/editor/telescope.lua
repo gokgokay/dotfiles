@@ -1,5 +1,5 @@
 return {
-	-- Fuzzy finder over lists
+	-- Fuzzy finder
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = { "Telescope", "TodoTelescope" },
@@ -19,29 +19,13 @@ return {
 					path_display = { "truncate" },
 					layout_config = {
 						prompt_position = "bottom",
-						horizontal = {
-							height = 0.85,
-						},
 					},
 					pickers = {
 						find_files = {
 							find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
 						},
-						man_pages = {
-							theme = "dropdown",
-						},
 						buffers = {
 							sort_lastused = true,
-							theme = "dropdown",
-							previewer = true,
-							mappings = {
-								i = {
-									["<C-d>"] = actions.delete_buffer + actions.move_to_top,
-								},
-							},
-						},
-						current_buffer_fuzzy_find = {
-							previewer = false,
 						},
 					},
 					mappings = {
@@ -60,12 +44,9 @@ return {
 							require("telescope.themes").get_dropdown({}),
 						},
 						fzy_native = {
-							override_generic_sorter = false,
+							override_generic_sorter = true,
 							override_file_sorter = true,
-						},
-						smart_open = {
-							match_algorithm = "fzf",
-							disable_devicons = false,
+							case_mode = "smart_case",
 						},
 						themes = {
 							enable_live_preview = true,
@@ -84,21 +65,14 @@ return {
 			{ "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
 			{ "<leader>fc", "<cmd>Telescope grep_string<cr>", desc = "Find config file (cwd)" },
 			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files (root)" },
-			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
-			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
 			{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Find todos" },
 			-- search
-			{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
-			{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto commands" },
 			{ "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
 			{ "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command history" },
-			{ "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
 			{ "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
 			{ "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep (root)" },
 			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help pages" },
-			{ "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search highlight groups" },
 			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
-			{ "<leader>sw", "<cmd>Telescope grep_string<cr>", { word_match = "-w" }, desc = "Word (root)" },
 			{ "<leader>ut", "<cmd>Telescope themes<cr>", { enable_preview = true }, desc = "Switch themes" },
 			-- git
 			{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
