@@ -22,9 +22,6 @@ require("lazy").setup({
 	{ import = "plugins.ui" },
 	{ import = "plugins.code" },
 	{ import = "plugins.editor" },
-	{ import = "plugins.completion" },
 	{ import = "plugins.code.language" },
 	{ import = "plugins.code.lsp" },
-	{ import = "plugins.debug" },
-	{ import = "plugins.test" },
 })
