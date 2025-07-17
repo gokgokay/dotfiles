@@ -1,4 +1,17 @@
 return {
+	-- Python debugging with debugpy
+	{
+		"mfussenegger/nvim-dap-python",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+		lazy = true,
+		config = function()
+			local python = vim.fn.expand("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+			require("dap-python").setup(python)
+		end,
+	},
+
 	-- Python virtual environment selector
 	{
 		"linux-cultist/venv-selector.nvim",
