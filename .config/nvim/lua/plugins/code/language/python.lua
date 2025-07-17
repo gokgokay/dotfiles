@@ -12,6 +12,29 @@ return {
 		end,
 	},
 
+	-- IPython REPL config
+	{
+		"hkupty/iron.nvim",
+		opts = {
+			config = {
+				repl_definition = {
+					python = {
+						command = { "ipython", "--no-autoindent" },
+						block_dividers = { "# %%", "#%%" },
+						-- Removes comment lines and applies bracketed paste for IPython
+						format = function(lines, extras)
+							local result = require("iron.fts.common").bracketed_paste_python(lines, extras)
+							local filtered = vim.tbl_filter(function(line)
+								return not string.match(line, "^%§*#")
+							end, result)
+							return filtered
+						end,
+					},
+				},
+			},
+		},
+	},
+
 	-- Python virtual environment selector
 	{
 		"linux-cultist/venv-selector.nvim",
