@@ -19,7 +19,7 @@ return {
 				{ "<leader>f", group = "file/find" },
 				{ "<leader>g", group = "git" },
 				{ "<leader>n", group = "notes" },
-				{ "<leader>r", group = "rest" },
+				{ "<leader>r", group = "jupyter" },
 				{ "<leader>s", group = "search" },
 				{ "<leader>t", group = "test" },
 				{ "<leader>w", group = "window" },
