@@ -3,7 +3,8 @@ return {
 	{
 		"rmagatti/auto-session",
 		opts = {
-			bypass_save_filetypes = { "alpha", "dashboard" },
+			bypass_save_filetypes = { "alpha", "dashboard", "terminal" },
+			pre_save_cmds = { "NvimTreeClose" },
 		},
 		keys = {
 			{ "<leader>qd", "<cmd>SessionDelete<cr>", desc = "Delete session" },
