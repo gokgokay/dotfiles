@@ -23,5 +23,4 @@ require("lazy").setup({
 	{ import = "plugins.code" },
 	{ import = "plugins.editor" },
 	{ import = "plugins.code.language" },
-	{ import = "plugins.code.lsp" },
 })
