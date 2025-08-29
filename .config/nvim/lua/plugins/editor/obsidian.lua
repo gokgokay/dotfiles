@@ -1,9 +1,10 @@
 return {
+	-- Notes management
 	"epwalsh/obsidian.nvim",
 	version = "*",
-	lazy = false,
+	lazy = true,
 	ft = "markdown",
-	dependencies = { "nvim-lua/plenary.nvim", "tpope/vim-markdown" },
+	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {
 		workspaces = {
 			{
