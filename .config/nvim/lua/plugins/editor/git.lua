@@ -8,7 +8,6 @@ return {
 			"sindrets/diffview.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-		config = true,
 		keys = {
 			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
 		},
@@ -19,31 +18,33 @@ return {
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
 		opts = {
-			yadm = { enable = true },
 			on_attach = function(bufnr)
-				local gs = require("gitsigns")
-
-				local function map(mode, keys, func, desc)
-					vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
+				local gitsigns = require("gitsigns")
+				local function map(mode, l, r, opts)
+					opts = opts or {}
+					opts.buffer = bufnr
+					vim.keymap.set(mode, l, r, opts)
 				end
 
+				-- next hunk
 				local function nav_hunk_next()
 					if vim.wo.diff then
 						vim.cmd.normal({ "]g", bang = true })
 					else
-						gs.nav_hunk("next")
+						gitsigns.nav_hunk("next")
 					end
 				end
 
+				-- previous hunk
 				local function nav_hunk_prev()
 					if vim.wo.diff then
 						vim.cmd.normal({ "[g", bang = true })
 					else
-						gs.nav_hunk("prev")
+						gitsigns.nav_hunk("prev")
 					end
 				end
 
-				-- Hunk navigation
+				-- navigation
 				map("n", "]g", nav_hunk_next, "Next hunk")
 				map("n", "[g", nav_hunk_prev, "Previous hunk")
 			end,
