@@ -45,8 +45,8 @@ return {
 				end
 
 				-- navigation
-				map("n", "]g", nav_hunk_next, "Next hunk")
-				map("n", "[g", nav_hunk_prev, "Previous hunk")
+				map("n", "]g", nav_hunk_next, { desc = "Next hunk" })
+				map("n", "[g", nav_hunk_prev, { desc = "Previous hunk" })
 			end,
 		},
 		keys = {
