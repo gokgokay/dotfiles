@@ -2,8 +2,9 @@ return {
 	-- Session management
 	{
 		"rmagatti/auto-session",
+		lazy = false,
 		opts = {
-			bypass_save_filetypes = { "alpha", "dashboard", "terminal" },
+			bypass_save_filetypes = { "dashboard" },
 			pre_save_cmds = { "NvimTreeClose" },
 		},
 		keys = {
