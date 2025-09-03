@@ -1,5 +1,5 @@
 return {
-	-- Tmux integration
+	-- Tmux navigation
 	"christoomey/vim-tmux-navigator",
 	event = "VeryLazy",
 	keys = {
