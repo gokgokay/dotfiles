@@ -1,33 +1,44 @@
 return {
-	-- Manage LSP, linters, and formatters
+	-- Lsp config
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false,
+		config = function()
+			require("config.lsp").setup()
+		end,
+	},
+
+	-- Manage lsp, linters, and formatters
 	{
 		"williamboman/mason.nvim",
 		lazy = false,
 		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"stylua",
-				"shfmt",
-			},
+			max_concurrent_installers = 10,
 		},
 		keys = {
 			{ "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
 		},
 	},
 
-	-- LSP config
+	-- Auto-configuring installed LSP servers
 	{
-		"neovim/nvim-lspconfig",
+		"mason-org/mason-lspconfig.nvim",
 		lazy = false,
-		keys = {
-			{
-				"gR",
-				function()
-					vim.lsp.buf.rename()
-				end,
-				mode = "n",
-				desc = "Rename word under cursor",
-			},
-		},
+		opts = {},
+	},
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    config = function()
+      require("mason-lspconfig").setup {}
+    end,
+  },
+
+	-- Auto-install lsp, linters and formatters
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		lazy = false,
+		opts = require("config.mason"),
 	},
 }

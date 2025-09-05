@@ -47,3 +47,11 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.opt_local.spell = true
 	end,
 })
+
+-- Diagnostics display
+vim.diagnostic.config({
+	virtual_lines = {
+		current_line = true,
+	},
+	update_in_insert = false,
+})
