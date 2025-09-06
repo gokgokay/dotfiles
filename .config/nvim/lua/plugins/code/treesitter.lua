@@ -4,7 +4,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
-		lazy = vim.fn.argc(-1) == 0,
+		lazy = false,
 		opts = {
 			auto_install = true,
 			highlight = {
@@ -46,11 +46,5 @@ return {
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 		end,
-	},
-
-	-- Additional text objects
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = "VeryLazy",
 	},
 }
