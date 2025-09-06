@@ -63,4 +63,4 @@ map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Commen
 map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
 
 -- Copy entire buffer
-vim.keymap.set("n", "<leader><space>", "ggVGy", { desc = "Copy entire buffer" })
+map("n", "<leader><space>", "ggVGy", { desc = "Copy entire buffer" })
