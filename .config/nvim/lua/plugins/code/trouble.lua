@@ -1,10 +1,10 @@
 return {
-	-- Manage diagnostics
+	-- Better diagnostics list and others
 	{
 		"folke/trouble.nvim",
 		cmd = "Trouble",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = true,
+		lazy = false,
 		keys = {
 			{
 				"<leader>xx",
