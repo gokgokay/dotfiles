@@ -7,9 +7,6 @@ return {
 			view = {
 				width = 35,
 			},
-			filters = {
-				dotfiles = true,
-			},
 			actions = {
 				open_file = {
 					quit_on_open = true,
