@@ -55,3 +55,20 @@ vim.diagnostic.config({
 	},
 	update_in_insert = false,
 })
+
+-- Use "q" or "<Esc>" to close special buffers
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"checkhealth",
+		"lspinfo",
+		"lazy",
+		"help",
+		"neotest-output-panel",
+		"neotest-summary",
+	},
+	command = [[
+          nnoremap <buffer><silent> q :close<CR>
+          nnoremap <buffer><silent> <esc> :close<CR>
+          set nobuflisted
+      ]],
+})
