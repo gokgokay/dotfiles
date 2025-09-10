@@ -1,8 +1,7 @@
 return {
-	-- Notes management
+	-- Note management
 	"epwalsh/obsidian.nvim",
 	version = "*",
-	lazy = true,
 	ft = "markdown",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {
@@ -14,9 +13,8 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>on", ":ObsidianNew<cr>", desc = "New note" },
-		{ "<leader>oo", ":ObsidianQuickSwitch<cr>", desc = "Quickly switch" },
-		{ "<leader>os", ":ObsidianSearch<cr>", desc = "Search notes" },
-		{ "<leader>ot", ":ObsidianTags<cr>", desc = "Show tags" },
+		{ "<leader>nn", ":ObsidianQuickSwitch<cr>", desc = "Quickly switch" },
+		{ "<leader>ns", ":ObsidianSearch<cr>", desc = "Search notes" },
+		{ "<leader>nt", ":ObsidianTags<cr>", desc = "Show tags" },
 	},
 }
