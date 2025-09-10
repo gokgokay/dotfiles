@@ -17,15 +17,9 @@ return {
 				defaults = {
 					layout_strategy = "horizontal",
 					path_display = { "truncate" },
-					layout_config = {
-						prompt_position = "bottom",
-					},
 					pickers = {
 						find_files = {
 							find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
-						},
-						buffers = {
-							sort_lastused = true,
 						},
 					},
 					mappings = {

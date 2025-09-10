@@ -11,11 +11,10 @@ return {
 			defaults = {
 				mode = { "n", "v" },
 				{ "g", group = "goto" },
-				{ "gh", group = "highlights" },
 				{ "<leader><tab>", group = "tabs" },
 				{ "<leader>b", group = "buffers" },
-				{ "<leader>bm", group = "move" },
 				{ "<leader>c", group = "code" },
+				{ "<leader>d", group = "debug" },
 				{ "<leader>f", group = "file/find" },
 				{ "<leader>g", group = "git" },
 				{ "<leader>n", group = "notes" },
@@ -26,11 +25,12 @@ return {
 				{ "<leader>u", group = "ui" },
 				{ "<leader>q", group = "quit/session" },
 				{ "<leader>x", group = "diagnostics" },
-				-- Hide keymaps
-				{ "<leader>e", hidden = true },
+
+				-- hide keymaps
 				{ "<leader>l", hidden = true },
 				{ "<leader>?", hidden = true },
 				{ "<leader>/", hidden = true },
+				{ "<leader><space>", hidden = true },
 			},
 		},
 		keys = {
