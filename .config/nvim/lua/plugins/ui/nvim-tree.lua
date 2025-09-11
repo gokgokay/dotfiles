@@ -14,7 +14,7 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle tree" },
+			{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "toggle tree" },
 		},
 		config = function(_, opts)
 			require("nvim-tree").setup(opts)

@@ -1,7 +1,8 @@
 return {
-	--- Show scope guides for indentation
+	-- Show scope guides for indentation
 	{
 		"echasnovski/mini.indentscope",
+		event = { "BufReadPre", "BufNewFile" },
 		enabled = true,
 		opts = {
 			symbol = "▏",
@@ -13,28 +14,5 @@ return {
 				end,
 			},
 		},
-		init = function()
-			local disabled_ft = {
-				"alpha",
-				"dashboard",
-				"help",
-				"notify",
-				"NvimTree",
-				"neo-tree",
-				"lazy",
-				"checkhealth",
-				"mason",
-				"terminal",
-				"Trouble",
-				"toggleterm",
-			}
-			-- Disable indentscope for the specified filetypes
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = disabled_ft,
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
-		end,
 	},
 }
