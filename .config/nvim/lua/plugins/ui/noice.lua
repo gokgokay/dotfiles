@@ -19,8 +19,6 @@ return {
 				bottom_search = true,
 				command_palette = true,
 				long_message_to_split = true,
-				inc_rename = false,
-				lsp_doc_border = false,
 			},
 			views = {
 				cmdline_popup = {
@@ -29,17 +27,13 @@ return {
 						height = "auto",
 					},
 					border = {
-						style = "none",
+						style = "shadow",
 						padding = { 1, 1 },
 					},
-					filter_options = {},
 					win_options = {
 						winblend = 0,
 						winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
 					},
-				},
-				notify = {
-					replace = true,
 				},
 			},
 			routes = {
@@ -57,7 +51,7 @@ return {
 			},
 		},
 		config = function(_, opts)
-			-- Clear messages on lazy.nvim startup
+			-- clear messages on lazy.nvim startup
 			if vim.o.filetype == "lazy" then
 				vim.cmd([[messages clear]])
 			end
