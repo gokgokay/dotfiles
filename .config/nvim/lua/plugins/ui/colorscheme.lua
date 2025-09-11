@@ -1,11 +1,27 @@
 return {
+	-- Theme setup
 	{
 		"catppuccin/nvim",
-		priority = 1000,
 		name = "catppuccin",
-    config = function()
-			vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-			vim.cmd([[colorscheme catppuccin]])
+		lazy = false,
+		priority = 1000,
+		opts = {
+			integrations = {
+				cmp = true,
+				gitsigns = true,
+				nvimtree = true,
+				notify = true,
+				treesitter = true,
+				treesitter_context = true,
+			},
+			background = {
+				light = "latte",
+				dark = "macchiato",
+			},
+		},
+		config = function(_, opts)
+			require("catppuccin").setup(opts)
+			vim.cmd.colorscheme("catppuccin-macchiato")
 		end,
 	},
 }
