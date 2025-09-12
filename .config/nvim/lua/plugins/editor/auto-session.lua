@@ -6,6 +6,7 @@ return {
 		opts = {
 			bypass_save_filetypes = { "dashboard" },
 			pre_save_cmds = { "NvimTreeClose" },
+			close_filetypes_on_save = { "checkhealth", "iron" },
 		},
 		keys = {
 			{ "<leader>qd", "<cmd>SessionDelete<cr>", desc = "Delete session" },
