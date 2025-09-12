@@ -13,6 +13,13 @@ return {
 				notify = true,
 				treesitter = true,
 				treesitter_context = true,
+				neotest = true,
+				which_key = true,
+				markdown = true,
+				mason = true,
+				fzf = true,
+				flash = true,
+				indent_blankline = { enabled = true },
 			},
 			background = {
 				light = "latte",
