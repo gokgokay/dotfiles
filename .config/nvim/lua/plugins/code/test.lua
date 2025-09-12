@@ -1,7 +1,8 @@
 return {
-	-- Run tests within NeoVim
+	-- Run test easily
 	{
 		"vim-test/vim-test",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "preservim/vimux" },
 		keys = {
 			{ "<leader>tt", "<cmd>:TestNearest<cr>", desc = "Test nearest" },
