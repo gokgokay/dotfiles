@@ -2,75 +2,25 @@ return {
 	-- Debugging
 	{
 		"mfussenegger/nvim-dap",
-		lazy = true,
+		lazy = "VeryLazy",
 		keys = {
-
-			{
-				"<leader>db",
-				function()
-					require("dap").toggle_breakpoint()
-				end,
-				desc = "Toggle Breakpoint",
-			},
-			{
-				"<leader>db",
-				function()
-					require("dap").toggle_breakpoint()
-				end,
-				desc = "Toggle Breakpoint",
-			},
-
-			{
-				"<leader>dc",
-				function()
-					require("dap").continue()
-				end,
-				desc = "Continue",
-			},
-			{
-				"<leader>di",
-				function()
-					require("dap").step_into()
-				end,
-				desc = "Step Into",
-			},
-			{
-				"<leader>dO",
-				function()
-					require("dap").step_over()
-				end,
-				desc = "Step Over",
-			},
-			{
-				"<leader>do",
-				function()
-					require("dap").step_out()
-				end,
-				desc = "Step Out",
-			},
-			{
-				"<leader>dt",
-				function()
-					require("dap").terminate()
-				end,
-				desc = "Terminate",
-			},
+			{ "<leader>db", require("dap").toggle_breakpoint, desc = "Toggle Breakpoint" },
+			{ "<leader>dc", require("dap").continue, desc = "Continue" },
+			{ "<leader>di", require("dap").step_into, desc = "Step Into" },
+			{ "<leader>do", require("dap").step_out, desc = "Step Out" },
+			{ "<leader>dO", require("dap").step_over, desc = "Step Over" },
+			{ "<leader>dt", require("dap").terminate, desc = "Terminate" },
 		},
 	},
 
-	-- Mason integration for DAP adapters
+	-- Mason integration for dap adapters
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"williamboman/mason.nvim",
 		},
-		opts = {
-			ensure_installed = {
-				"bash",
-				"python",
-			},
-		},
+		opts = require("config.mason"),
 	},
 
 	-- UI for debugging
@@ -83,7 +33,6 @@ return {
 		opts = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
-
 			dap.listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open()
 			end
@@ -93,7 +42,6 @@ return {
 			dap.listeners.before.event_exited["dapui_config"] = function()
 				dapui.close()
 			end
-
 			return {
 				layouts = {
 					{
@@ -114,13 +62,12 @@ return {
 				},
 			}
 		end,
-
 		config = function(_, opts)
 			require("dapui").setup(opts)
 		end,
 	},
 
-	-- Shows inline debug info (virtual text)
+	-- Shows inline debug info as virtual text
 	{
 		"theHamsta/nvim-dap-virtual-text",
 		dependencies = {
