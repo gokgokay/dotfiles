@@ -20,4 +20,20 @@ return {
 			require("dap-python").setup(python)
 		end,
 	},
+
+	-- IPython repl config
+	{
+		"hkupty/iron.nvim",
+		ft = "python",
+		opts = {
+			config = {
+				repl_definition = {
+					python = {
+						command = { "ipython", "--no-autoindent" },
+						block_dividers = { "# %%", "#%%" },
+					},
+				},
+			},
+		},
+	},
 }

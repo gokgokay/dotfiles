@@ -1,7 +1,8 @@
 return {
-	-- Lua REPL config
+	-- Lua repl config
 	{
 		"hkupty/iron.nvim",
+		ft = "lua",
 		opts = {
 			config = {
 				repl_definition = {
