@@ -9,7 +9,7 @@ map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" }) -- file
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- Save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
@@ -30,9 +30,8 @@ map("n", "<leader>ws", "<C-w>x", { desc = "Swap window" })
 map("n", "<leader>w<", "<C-w><", { desc = "Decrease window width" })
 map("n", "<leader>w>", "<C-w>>", { desc = "Increase window width" })
 
--- Tabs
-map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Delete tab" })
+-- Clear search highlights
+map("n", "noh", ":nohlsearch<CR>", { desc = "Clear search highlight" })
 
 -- Diagnostic movement
 local diagnostic_goto = function(next, severity)

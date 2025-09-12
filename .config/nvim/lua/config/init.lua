@@ -1,4 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+-- Disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+-- Install lazy.nvim if not present
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
