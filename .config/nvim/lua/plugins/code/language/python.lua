@@ -2,7 +2,6 @@ return {
 	-- Test runner with pytest
 	{
 		"vim-test/vim-test",
-		ft = "python",
 		config = function()
 			vim.g["test#python#runner"] = "pytest"
 		end,
@@ -35,5 +34,11 @@ return {
 				},
 			},
 		},
+	},
+
+	-- Ensure treesitter installs support
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = { ensure_installed = { "ninja", "rst" } },
 	},
 }
