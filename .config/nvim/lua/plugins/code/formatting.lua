@@ -1,13 +1,10 @@
 return {
 	-- Autoformat
 	"stevearc/conform.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "VeryLazy" },
 	opts = {
 		default_format_opts = {
 			timeout_ms = 3000,
-			async = false,
-			quiet = false,
-			lsp_format = "fallback",
 		},
 		formatters_by_ft = {
 			python = { "isort", "black" },
@@ -34,7 +31,4 @@ return {
 			desc = "Format buffer",
 		},
 	},
-	config = function(_, opts)
-		require("conform").setup(opts)
-	end,
 }
