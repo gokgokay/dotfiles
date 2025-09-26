@@ -1,15 +1,17 @@
 return {
-	-- Syntax highlighting and text manipulation engine
+	-- Syntax highlighting
+	-- TODO:
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile" },
-		build = ":TSUpdate",
-		lazy = false,
+		cmd = { "TSUpdate", "TSInstall", "TSUninstall" },
 		opts = {
+			folds = {
+				enable = true,
+			},
 			auto_install = true,
 			highlight = {
 				enable = true,
-				additional_vim_regex_highlighting = false,
 			},
 			indent = {
 				enable = true,
