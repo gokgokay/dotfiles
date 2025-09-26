@@ -4,8 +4,8 @@ return {
 	event = "VeryLazy",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
-		{ "<leader>st", "<cmd>TodoTelescope keywords=TODO,FIX<cr>", desc = "Todo/Fix" },
-		{ "<leader>sT", "<cmd>TodoTelescope<cr>", desc = "All Todos" },
+		{ "<leader>st", "<cmd>TodoTelescope keywords=TODO,FIX,HACK<cr>", desc = "Todo/Fix/Hack" },
+		{ "<leader>sq", "<cmd>TodoQuickFix<cr>", desc = "Quickfix Todos" },
 	},
 	config = function()
 		require("todo-comments").setup()
