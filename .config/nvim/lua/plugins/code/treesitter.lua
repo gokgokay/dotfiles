@@ -1,6 +1,5 @@
 return {
 	-- Syntax highlighting
-	-- TODO:
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile" },
@@ -48,5 +47,11 @@ return {
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 		end,
+	},
+
+	-- Comment easily
+	{
+		"folke/ts-comments.nvim",
+		event = "VeryLazy",
 	},
 }

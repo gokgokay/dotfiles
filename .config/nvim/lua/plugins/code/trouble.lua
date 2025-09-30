@@ -3,8 +3,6 @@ return {
 	{
 		"folke/trouble.nvim",
 		cmd = "Trouble",
-		config = true,
-		lazy = false,
 		keys = {
 			{
 				"<leader>xx",
