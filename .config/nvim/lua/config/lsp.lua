@@ -1,16 +1,33 @@
 local M = {}
 
-local servers = {
+M.ensure_installed = {
+	"pyright", -- python lsp
+	"black", -- python formatter
+	"ruff", -- python linter
+	"debugpy", -- python debugger
+	"isort", -- python import sorter
+	"lua_ls", -- lua lsp
+	"stylua", -- lua formatter
+	"shfmt", -- shell formatter
+	"bashls", -- bash lsp
+	"jsonls", -- json lsp
+	"html", -- html lsp
+	"cssls", -- css lsp
+	"prettier", -- js/ts/html/css formatter
+}
+
+M.servers = {
 	-- python
 	pyright = {
-		filetypes = { "python" },
 		settings = {
-			disableOrganizeImports = true, -- using ruff's import organizer
-			analysis = {
-				autoSearchPaths = true,
-				diagnosticMode = "openFilesOnly",
-				typeCheckingMode = "standard",
-				useLibraryCodeForTypes = true,
+			python = {
+				disableOrganizeImports = true,
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "openFilesOnly",
+					typeCheckingMode = "standard",
+					useLibraryCodeForTypes = true,
+				},
 			},
 		},
 	},
@@ -34,7 +51,7 @@ M.setup = function()
 	local lspconfig = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-	for server_name, config in pairs(servers) do
+	for server_name, config in pairs(M.servers) do
 		config.capabilities = capabilities
 		lspconfig[server_name].setup(config)
 	end

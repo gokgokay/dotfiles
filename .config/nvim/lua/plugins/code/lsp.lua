@@ -1,25 +1,31 @@
 return {
-	-- Lsp config
+	-- Core LSP configuration
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "williamboman/mason-lspconfig.nvim" },
 		config = function()
 			require("config.lsp").setup()
 		end,
 	},
+
+	-- Mason core package manager
 	{
 		"williamboman/mason.nvim",
-		opts = {
-			max_concurrent_installers = 10,
+		cmd = "Mason",
+		build = ":MasonUpdate",
+		opts = {},
+		keys = {
+			{ "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
 		},
-		keys = { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
 	},
 
 	-- Auto-install lsp, linters and formatters
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		lazy = false,
-		opts = require("config.mason"),
+		opts = {
+			ensure_installed = require("config.lsp").ensure_installed,
+		},
 	},
 }
