@@ -5,8 +5,10 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		enabled = true,
 		opts = {
-			symbol = "▏",
-			options = { try_as_border = true },
+			symbol = "╎",
+			options = {
+				try_as_border = true,
+			},
 			draw = {
 				delay = 50,
 				animation = function()
