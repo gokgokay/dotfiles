@@ -1,5 +1,5 @@
 return {
-	-- Startup dashboard with shortcuts and logo
+	-- Startup dashboard with shortcuts
 	{
 		"nvimdev/dashboard-nvim",
 		lazy = false,
@@ -7,13 +7,13 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = function()
 			local logo = [[
-██╗   ██╗██╗███╗   ███╗
-██║   ██║██║████╗ ████║
-██║   ██║██║██╔████╔██║
-╚██╗ ██╔╝██║██║╚██╔╝██║
- ╚████╔╝ ██║██║ ╚═╝ ██║
-  ╚═══╝  ╚═╝╚═╝     ╚═╝
-      ]]
+███████╗██╗  ██╗██╗   ██╗██╗   ██╗██╗███╗   ███╗
+██╔════╝██║ ██╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║
+███████╗█████╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║
+╚════██║██╔═██╗   ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║
+███████║██║  ██╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
+╚══════╝╚═╝  ╚═╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
+                                                     ]]
 			logo = string.rep("\n", 8) .. logo .. "\n\n"
 
 			local menu = {
