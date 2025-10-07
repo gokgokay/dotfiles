@@ -1,7 +1,11 @@
 return {
-	-- Library used by other plugins
+	-- Libraries used by other plugins
 	{
 		"nvim-lua/plenary.nvim",
 		lazy = true,
+	},
+	{
+		"echasnovski/mini.bufremove",
+		version = false,
 	},
 }
