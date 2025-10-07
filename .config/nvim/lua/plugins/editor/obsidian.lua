@@ -3,7 +3,10 @@ return {
 	"epwalsh/obsidian.nvim",
 	version = "*",
 	ft = "markdown",
-	dependencies = { "nvim-lua/plenary.nvim" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"MeanderingProgrammer/render-markdown.nvim",
+	},
 	opts = {
 		workspaces = {
 			{
