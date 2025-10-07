@@ -15,7 +15,6 @@ return {
 			local actions = require("telescope.actions")
 			return {
 				defaults = {
-					layout_strategy = "horizontal",
 					path_display = { "truncate" },
 					pickers = {
 						find_files = {

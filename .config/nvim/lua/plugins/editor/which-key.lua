@@ -11,7 +11,6 @@ return {
 			defaults = {
 				mode = { "n", "v" },
 				{ "g", group = "goto" },
-				{ "<leader><tab>", group = "tabs" },
 				{ "<leader>b", group = "buffers" },
 				{ "<leader>c", group = "code" },
 				{ "<leader>d", group = "debug" },
