@@ -1,5 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
--- TODO:
+
+-- Set leader to space
+vim.g.mapleader = " "
 
 -- Disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
@@ -34,7 +36,7 @@ end
 require("lazy").setup({
 	{ import = "plugins" },
 	{ import = "plugins.ui" },
-	{ import = "plugins.code" },
 	{ import = "plugins.editor" },
-	{ import = "plugins.code.language" },
+	{ import = "plugins.coding" },
+	{ import = "plugins.coding.language" },
 })
