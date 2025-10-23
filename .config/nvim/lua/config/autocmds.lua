@@ -1,7 +1,6 @@
 -- This file is automatically loaded by config.lua
 local autocmd = vim.api.nvim_create_autocmd
 local sethl = vim.api.nvim_set_hl
-
 local function augroup(name)
 	return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
@@ -82,16 +81,16 @@ autocmd("FileType", {
 			vim.keymap.set("n", "q", close_fn, {
 				buffer = event.buf,
 				silent = true,
-				desc = "Quit buffer",
 			})
 			vim.keymap.set("n", "<esc>", close_fn, {
 				buffer = event.buf,
 				silent = true,
-				desc = "Quit buffer",
 			})
 		end)
 	end,
 })
+
+-- TODO: add keymaps to close quickfix with q or esc
 
 -- Move help buffer to the left side automatically
 vim.api.nvim_create_autocmd("FileType", {
