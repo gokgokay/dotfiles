@@ -1,6 +1,6 @@
 return {
+	-- Note management
 	{
-		-- Note management
 		"epwalsh/obsidian.nvim",
 		version = "*",
 		lazy = true,
