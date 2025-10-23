@@ -2,7 +2,7 @@ return {
 	{
 		-- Repl
 		"hkupty/iron.nvim",
-		event = "VeryLazy",
+		lazy = true,
 		opts = {
 			config = {
 				repl_open_cmd = "vertical rightbelow 90 split",

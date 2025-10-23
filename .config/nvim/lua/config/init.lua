@@ -41,4 +41,5 @@ require("lazy").setup({
 	{ import = "plugins.coding.language" },
 	{ import = "plugins.extras.coding" },
 	{ import = "plugins.extras.editor" },
+	{ import = "plugins.extras.ui" },
 })

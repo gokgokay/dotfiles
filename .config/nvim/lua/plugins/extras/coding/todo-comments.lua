@@ -2,7 +2,7 @@ return {
 	{
 		-- Highlight todo, notes, etc in comments
 		"folke/todo-comments.nvim",
-		-- event = "VeryLazy",
+		lazy = true,
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
 			{ "<leader>st", "<cmd>TodoTelescope keywords=TODO,FIX,HACK<cr>", desc = "Todo/Fix/Hack" },

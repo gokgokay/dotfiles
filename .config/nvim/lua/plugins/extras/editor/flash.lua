@@ -2,7 +2,7 @@ return {
 	-- Quick search and jump
 	{
 		"folke/flash.nvim",
-		event = "VeryLazy",
+		lazy = true,
 		keys = {
 			{
 				"s",
