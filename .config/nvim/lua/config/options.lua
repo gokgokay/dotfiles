@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 local opt = vim.opt
 
 opt.cursorline = true -- Highlight current line
@@ -31,13 +30,15 @@ opt.pumheight = 10 -- Popup menu max height
 opt.pumblend = 10 -- Popup menu transparency
 opt.termguicolors = true -- True color support
 opt.mouse = "a" -- Enable mouse support
-
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
+opt.foldlevelstart = 99 -- Load buffers with folds open
+opt.conceallevel = 2
 
 vim.g.bigfile_size = 1024 * 1024 * 1.5 -- Threshold for large files
 vim.g.markdown_recommended_style = 0 -- Disable recommended markdown styling
 vim.g.autoformat = true -- Enable autoformat
 vim.g.trouble_lualine = true -- Integrate Trouble with Lualine
+vim.g.VM_theme = "paper" -- VM multi-cursor theme
+vim.g.netrw_liststyle = 3 -- Tree style file explorer
 
-vim.cmd("let g:netrw_liststyle = 3") -- Tree style file explorer
-vim.cmd("let g:VM_theme = 'paper'") -- VM multi-cursor theme
+vim.o.sessionoptions = "globals,blank,buffers,curdir,folds,help,tabpages,winsize" -- What gets saved/restored
