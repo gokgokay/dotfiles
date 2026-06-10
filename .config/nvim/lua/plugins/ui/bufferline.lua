@@ -8,10 +8,6 @@ return {
 			options = {
 				diagnostics = "nvim_lsp",
 				always_show_bufferline = false,
-				diagnostics_indicator = function(count, level)
-					local icon = level:match("error") and " " or " "
-					return " " .. icon .. count
-				end,
 			},
 		},
 		keys = {
