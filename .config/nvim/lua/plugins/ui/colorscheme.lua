@@ -21,10 +21,6 @@ return {
 				flash = true,
 				indent_blankline = { enabled = true },
 			},
-			background = {
-				light = "latte",
-				dark = "macchiato",
-			},
 		},
 		config = function(_, opts)
 			require("catppuccin").setup(opts)

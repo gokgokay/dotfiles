@@ -1,5 +1,5 @@
 return {
-	-- Minimal UI notifications
+	-- Minimal UI popups
 	{
 		"rcarriga/nvim-notify",
 		event = "VeryLazy",
@@ -10,7 +10,7 @@ return {
 		},
 	},
 
-	-- Modern UI for messages, LSP, command-line and notifications
+	-- Modern UI for messages, LSP, cmdline and popupmenu
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
