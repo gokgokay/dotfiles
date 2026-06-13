@@ -1,5 +1,5 @@
 return {
-	-- Statusline customization
+	-- Statusline
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VimEnter",
@@ -10,8 +10,8 @@ return {
 		opts = {
 			options = {
 				theme = "auto",
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "", right = "" },
+				component_separators = "",
+				section_separators = { left = "", right = "" },
 				globalstatus = true,
 				disabled_filetypes = {
 					statusline = {
@@ -23,11 +23,11 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff" },
-				lualine_c = { { "filename" } },
-				lualine_x = { "diagnostics", "filetype" },
-				lualine_y = { "encoding", "fileformat" },
-				lualine_z = { "location", "progress" },
+				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_c = { "filename" },
+				lualine_x = { "fileformat", "filetype" },
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
 			},
 			extensions = {
 				"nvim-tree",

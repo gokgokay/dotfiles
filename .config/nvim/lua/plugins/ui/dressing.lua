@@ -1,6 +1,6 @@
 return {
+	-- UI Elements
 	{
-		-- Improve default vim.ui interfaces
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 	},
