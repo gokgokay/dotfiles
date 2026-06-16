@@ -10,6 +10,9 @@ return {
 		},
 		keys = {
 			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+			{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
+			{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
+			{ "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
 		},
 	},
 
