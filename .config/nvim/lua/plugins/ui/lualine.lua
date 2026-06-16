@@ -3,13 +3,10 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VimEnter",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			"arkav/lualine-lsp-progress",
-		},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			options = {
-				theme = "auto",
+				theme = "catppuccin",
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 				globalstatus = true,
@@ -29,13 +26,7 @@ return {
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
-			extensions = {
-				"nvim-tree",
-				"nvim-dap-ui",
-				"mason",
-				"lazy",
-				"trouble",
-			},
+			extensions = { "nvim-tree", "nvim-dap-ui", "mason", "lazy", "trouble" },
 		},
 	},
 }
