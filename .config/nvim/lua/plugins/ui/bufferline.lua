@@ -1,13 +1,23 @@
 return {
 	-- Buffer management
+	-- FIX: File explorer does not show up when only one file is open
 	{
 		"akinsho/bufferline.nvim",
 		dependencies = { "echasnovski/mini.bufremove" },
-		event = "VeryLazy",
+		event = "VimEnter",
 		opts = {
 			options = {
 				diagnostics = "nvim_lsp",
 				always_show_bufferline = false,
+				separator_style = "thin",
+				offsets = {
+					{
+						filetype = "NvimTree",
+						text = "File Explorer",
+						highlight = "Directory",
+						separator = true,
+					},
+				},
 			},
 		},
 		keys = {
