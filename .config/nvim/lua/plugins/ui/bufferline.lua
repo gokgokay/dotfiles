@@ -1,5 +1,6 @@
 return {
 	-- Buffer management
+	-- FIX: File explorer does not show up when only one file is open
 	{
 		"akinsho/bufferline.nvim",
 		dependencies = { "echasnovski/mini.bufremove" },
@@ -7,8 +8,7 @@ return {
 		opts = {
 			options = {
 				diagnostics = "nvim_lsp",
-				-- keep the bar (and the NvimTree offset below) visible even with a single buffer
-				always_show_bufferline = true,
+				always_show_bufferline = false,
 				separator_style = "thin",
 				offsets = {
 					{

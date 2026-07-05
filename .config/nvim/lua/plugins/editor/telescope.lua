@@ -44,7 +44,7 @@ return {
 						themes = {
 							enable_live_preview = true,
 							persist = {
-								enabled = true,
+								enabled = false,
 								path = vim.fn.stdpath("config") .. "/lua/config/colorscheme.lua",
 							},
 						},

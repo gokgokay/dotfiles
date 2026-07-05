@@ -5,7 +5,7 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 map("n", "<leader><space>", "ggVGy", { desc = "Copy entire buffer" })
 map("i", "jk", "<esc>", { desc = "Exit insert mode" })
-map("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
+map("n", "noh", ":nohlsearch<CR>", { desc = "Clear search highlight" })
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- Move lines
