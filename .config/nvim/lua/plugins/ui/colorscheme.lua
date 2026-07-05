@@ -24,7 +24,10 @@ return {
 		},
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
-			vim.cmd.colorscheme("catppuccin-macchiato")
+			local persisted = vim.fn.stdpath("config") .. "/lua/config/colorscheme.lua"
+			if not pcall(dofile, persisted) then
+				vim.cmd.colorscheme("catppuccin-macchiato")
+			end
 		end,
 	},
 }

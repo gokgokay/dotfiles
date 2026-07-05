@@ -1,3 +1,4 @@
 .DS_Store
 lazy-lock.json
 *.norg
+.config/nvim/lua/config/colorscheme.lua
