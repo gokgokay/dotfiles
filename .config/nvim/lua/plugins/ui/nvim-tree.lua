@@ -12,6 +12,10 @@ return {
 					quit_on_open = true,
 				},
 			},
+			renderer = {
+				-- show only folder name
+				root_folder_label = ":t",
+			},
 		},
 		keys = {
 			{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle tree" },
