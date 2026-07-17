@@ -1,6 +1,5 @@
 return {
 	-- Buffer management
-	-- FIX: File explorer does not show up when only one file is open
 	{
 		"akinsho/bufferline.nvim",
 		dependencies = { "echasnovski/mini.bufremove" },
@@ -8,7 +7,6 @@ return {
 		opts = {
 			options = {
 				diagnostics = "nvim_lsp",
-				always_show_bufferline = false,
 				separator_style = "thin",
 				offsets = {
 					{
@@ -21,9 +19,12 @@ return {
 			},
 		},
 		keys = {
-			{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-			{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+			{ "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+			{ "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
 			{ "<leader>bb", "<cmd>e #<cr>", desc = "Switch buffer" },
+			{ "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close other buffers" },
+			{ "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle pin buffer" },
+			{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Close non-pinned buffers" },
 			{
 				"<leader>bd",
 				function()
@@ -38,9 +39,6 @@ return {
 				end,
 				desc = "Force delete buffer",
 			},
-			{ "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close other buffers" },
-			{ "<leader>bp", "<cmd>BufferLineTogglePin<cr>", desc = "Toggle pin buffer" },
-			{ "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<cr>", desc = "Close non-pinned buffers" },
 		},
 	},
 }
