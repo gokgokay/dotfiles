@@ -1,4 +1,5 @@
 return {
+	-- TODO:
 	-- Statusline
 	{
 		"nvim-lualine/lualine.nvim",
@@ -6,7 +7,7 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			options = {
-				theme = "catppuccin",
+				theme = "auto",
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 				globalstatus = true,
@@ -22,11 +23,17 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
-				lualine_x = { "fileformat", "filetype" },
+				lualine_x = { "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
-			extensions = { "nvim-tree", "nvim-dap-ui", "mason", "lazy", "trouble" },
+			extensions = {
+				"nvim-tree",
+				"nvim-dap-ui",
+				"mason",
+				"lazy",
+				"trouble",
+			},
 		},
 	},
 }

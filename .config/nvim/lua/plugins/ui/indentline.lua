@@ -3,7 +3,6 @@ return {
 	{
 		"echasnovski/mini.indentscope",
 		event = { "BufReadPre", "BufNewFile" },
-		enabled = true,
 		opts = {
 			symbol = "╎",
 			options = {
