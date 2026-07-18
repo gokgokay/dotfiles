@@ -2,7 +2,6 @@ return {
 	-- Window resizing
 	{
 		"mrjones2014/smart-splits.nvim",
-		event = "VeryLazy",
 		keys = {
 			{ "<A-Right>", "<cmd>SmartResizeRight<cr>", desc = "Resize window right" },
 			{ "<A-Up>", "<cmd>SmartResizeUp<cr>", desc = "Resize window up" },
