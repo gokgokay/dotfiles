@@ -7,7 +7,7 @@ end
 
 -- Highlight on yank
 autocmd("TextYankPost", {
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	group = augroup("highlight_yank"),
 	callback = function()
 		vim.highlight.on_yank({ higroup = "YankHighlight", timeout = 200 })
 	end,
@@ -50,14 +50,6 @@ autocmd({ "FileType" }, {
 	end,
 })
 
--- Diagnostics display
-vim.diagnostic.config({
-	virtual_lines = {
-		current_line = true,
-	},
-	update_in_insert = false,
-})
-
 -- Close some filetypes with q or <esc>
 autocmd("FileType", {
 	pattern = {
@@ -65,11 +57,9 @@ autocmd("FileType", {
 		"lspinfo",
 		"lazy",
 		"help",
-		"neotest-output",
-		"neotest-output-panel",
-		"neotest-summary",
 		"notify",
-		"neogitstatus",
+		"NeogitStatus",
+		"qf",
 	},
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
@@ -90,10 +80,8 @@ autocmd("FileType", {
 	end,
 })
 
--- TODO: add keymaps to close quickfix with q or esc
-
 -- Move help buffer to the left side automatically
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
 	pattern = "help",
 	callback = function()
 		vim.cmd("wincmd H")
@@ -103,14 +91,12 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Disable indentscope, number and cursorline for the specific filetypes
 autocmd("FileType", {
 	pattern = {
-		"neo-tree",
 		"NvimTree",
 		"lazy",
 		"help",
 		"checkhealth",
 		"git",
 		"gitcommit",
-		"lazyterm",
 		"lspinfo",
 		"mason",
 		"notify",
@@ -131,23 +117,12 @@ autocmd({ "BufWinEnter", "ColorScheme" }, {
 	group = augroup("colors"),
 	pattern = { "*" },
 	callback = function()
-		local colors = {
-			base = "#1e2030",
-			base2 = "#23273c",
-			line = "#494d64",
-			text = "#cad3f5",
-			surface0 = "#363a4f",
-			peach = "#f5a97f",
-			blue = "#8aadf4",
-			sunny = "#f9e2af",
-			black = "#000000",
-		}
-
+		local colors = require("catppuccin.palettes").get_palette()
 		-- telescope
-		sethl(0, "TelescopeResultsBorder", { fg = colors.line, bg = colors.base })
-		sethl(0, "TelescopePreviewBorder", { fg = colors.line, bg = colors.base })
-		sethl(0, "TelescopeBorder", { fg = colors.line, bg = colors.base })
-		sethl(0, "TelescopePromptBorder", { fg = colors.line, bg = colors.base })
+		sethl(0, "TelescopeResultsBorder", { fg = colors.surface1, bg = colors.base })
+		sethl(0, "TelescopePreviewBorder", { fg = colors.surface1, bg = colors.base })
+		sethl(0, "TelescopeBorder", { fg = colors.surface1, bg = colors.base })
+		sethl(0, "TelescopePromptBorder", { fg = colors.surface1, bg = colors.base })
 		sethl(0, "TelescopeResultsNormal", { fg = colors.text, bg = colors.base })
 		sethl(0, "TelescopePromptNormal", { fg = colors.text, bg = colors.base })
 		sethl(0, "TelescopePreviewNormal", { fg = colors.text, bg = colors.base })
@@ -155,10 +130,8 @@ autocmd({ "BufWinEnter", "ColorScheme" }, {
 		sethl(0, "TelescopeResultsTitle", { fg = colors.text, bg = colors.base })
 		sethl(0, "TelescopeSelection", { fg = colors.text, bg = colors.surface0, bold = true })
 		sethl(0, "TelescopeMatching", { fg = colors.peach })
-
 		-- yank
-		sethl(0, "YankHighlight", { fg = colors.black, bg = colors.sunny })
-
+		sethl(0, "YankHighlight", { fg = colors.crust, bg = colors.yellow })
 		-- bufferline
 		sethl(0, "BufferLineFill", { bg = colors.base })
 	end,
