@@ -2,7 +2,7 @@ return {
 	-- Syntax highlighting
 	{
 		"nvim-treesitter/nvim-treesitter",
-    branch = "master",
+		branch = "master",
 		lazy = false,
 		build = ":TSUpdate",
 		opts = {
@@ -16,6 +16,7 @@ return {
 				"javascript",
 				"lua",
 				"luadoc",
+				"luap",
 				"markdown",
 				"markdown_inline",
 				"json",
@@ -29,6 +30,7 @@ return {
 				"dockerfile",
 				"gitignore",
 				"http",
+				"diff",
 			},
 		},
 	},
