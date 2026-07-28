@@ -13,7 +13,7 @@ return {
 			workspaces = {
 				{
 					name = "Notes",
-					path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/",
+					path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/vault/",
 				},
 			},
 		},
