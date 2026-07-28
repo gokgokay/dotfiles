@@ -1,5 +1,4 @@
 return {
-	-- TODO:
 	-- Statusline
 	{
 		"nvim-lualine/lualine.nvim",

@@ -1,12 +1,4 @@
 return {
-	-- Test runner with pytest
-	{
-		"vim-test/vim-test",
-		config = function()
-			vim.g["test#python#runner"] = "pytest"
-		end,
-	},
-
 	-- Python debugging with debugpy
 	{
 		"mfussenegger/nvim-dap-python",

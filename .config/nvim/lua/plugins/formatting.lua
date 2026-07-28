@@ -1,5 +1,5 @@
 return {
-	-- Autoformat
+  -- Code Formatter
 	{
 		"stevearc/conform.nvim",
 		event = { "VeryLazy" },

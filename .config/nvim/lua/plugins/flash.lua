@@ -2,7 +2,6 @@ return {
 	-- Quick search and jump
 	{
 		"folke/flash.nvim",
-		lazy = true,
 		keys = {
 			{
 				"s",

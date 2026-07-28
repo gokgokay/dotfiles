@@ -1,0 +1,41 @@
+return {
+	-- Syntax highlighting
+	{
+		"nvim-treesitter/nvim-treesitter",
+    branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+		opts = {
+			highlight = { enable = true },
+			indent = { enable = true, disable = { "python" } },
+			ensure_installed = {
+				"python",
+				"bash",
+				"html",
+				"css",
+				"javascript",
+				"lua",
+				"luadoc",
+				"markdown",
+				"markdown_inline",
+				"json",
+				"printf",
+				"query",
+				"yaml",
+				"xml",
+				"vim",
+				"vimdoc",
+				"graphql",
+				"dockerfile",
+				"gitignore",
+				"http",
+			},
+		},
+	},
+
+	-- Comment easily
+	{
+		"folke/ts-comments.nvim",
+		event = "VeryLazy",
+	},
+}
