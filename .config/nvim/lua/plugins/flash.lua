@@ -21,7 +21,15 @@ return {
 				function()
 					require("flash").treesitter()
 				end,
-				desc = "Flash Treesitter Select",
+				desc = "Flash treesitter",
+			},
+			{
+				"r",
+				mode = "o",
+				function()
+					require("flash").remote()
+				end,
+				desc = "Flash remote",
 			},
 		},
 	},
