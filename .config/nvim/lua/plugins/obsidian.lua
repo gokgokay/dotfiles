@@ -3,7 +3,6 @@ return {
 	{
 		"epwalsh/obsidian.nvim",
 		version = "*",
-		lazy = true,
 		ft = "markdown",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -12,15 +11,22 @@ return {
 		opts = {
 			workspaces = {
 				{
-					name = "Notes",
+					name = "notes",
 					path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/vault/",
 				},
 			},
+			templates = {
+				folder = "99-Templates",
+				date_format = "%Y-%m-%d-%a",
+				time_format = "%H:%M",
+			},
 		},
 		keys = {
-			{ "<leader>nn", ":ObsidianQuickSwitch<cr>", desc = "Quickly switch" },
-			{ "<leader>ns", ":ObsidianSearch<cr>", desc = "Search notes" },
-			{ "<leader>nt", ":ObsidianTags<cr>", desc = "Show tags" },
+			{ "<leader>nn", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quickly switch" },
+			{ "<leader>ns", "<cmd>ObsidianSearch<cr>", desc = "Search notes" },
+			{ "<leader>nt", "<cmd>ObsidianTags<cr>", desc = "Show tags" },
+			{ "<leader>no", "<cmd>ObsidianOpen<cr>", desc = "Open in app" },
+			{ "<leader>np", "<cmd>ObsidianTemplate<cr>", desc = "Insert template" },
 		},
 	},
 }
