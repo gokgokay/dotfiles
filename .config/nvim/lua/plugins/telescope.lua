@@ -3,8 +3,6 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"folke/todo-comments.nvim",
 			"andrew-george/telescope-themes",
 			"nvim-telescope/telescope-fzy-native.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
@@ -58,10 +56,6 @@ return {
 			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help pages" },
 			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
 			{ "<leader>ut", "<cmd>Telescope themes<cr>", desc = "Switch themes" },
-			-- git
-			{ "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Commits" },
-			{ "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Status" },
-			{ "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Branches" },
 		},
 		config = function(_, opts)
 			local telescope = require("telescope")
