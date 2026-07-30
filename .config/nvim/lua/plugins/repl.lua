@@ -1,22 +1,28 @@
 return {
-	-- Repl
+	-- Repl runner
 	{
 		"hkupty/iron.nvim",
-		lazy = true,
+		event = "VeryLazy",
 		opts = {
 			config = {
 				repl_open_cmd = "vertical rightbelow 90 split",
+				repl_definition = {
+					python = {
+						command = { "ipython", "--no-autoindent", "--TerminalInteractiveShell.confirm_exit=False" },
+						block_dividers = { "# %%", "#%%" },
+					},
+					lua = {
+						command = { "lua" },
+						block_dividers = { "-- %%", "--%%" },
+					},
+				},
 			},
 			keymaps = {
-				toggle_repl = "<space>rr",
-				send_file = "<space>rf",
-				send_line = "<space>rl",
 				send_code_block_and_move = "<space>rb",
-				send_paragraph = "<space>rp",
-				send_until_cursor = "<space>rt",
-				restart_repl = "<space>rR",
+				send_file = "<space>rf",
 				interrupt = "<space>ri",
-				clear = "<space>rc",
+				send_line = "<space>rl",
+				toggle_repl = "<space>rr",
 				exit = "<space>rq",
 			},
 		},
