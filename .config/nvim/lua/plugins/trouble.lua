@@ -1,5 +1,5 @@
 return {
-	-- Better diagnostics list and others
+	-- Better diagnostics
 	{
 		"folke/trouble.nvim",
 		cmd = "Trouble",
@@ -7,25 +7,23 @@ return {
 		keys = {
 			{
 				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
+				"<cmd>Trouble diagnostics toggle filter.buf=0 focus=true<cr>",
+				desc = "Buffer diagnostics",
 			},
 			{
-				"<leader>xX",
-				"<cmd>Trouble diagnostics toggle<cr>",
-				desc = "Workspace Diagnostics (Trouble)",
+				"<leader>xw",
+				"<cmd>Trouble diagnostics toggle focus=true<cr>",
+				desc = "Workspace diagnostics",
 			},
-			-- 💡 ÖNERİ: Kodda seçtiğin fonksiyonun/değişkenin nerelerde kullanıldığını listeler (Telescope'tan daha düzenlidir)
-			{
-				"<leader>gr",
-				"<cmd>Trouble lsp_references toggle focus=true<cr>",
-				desc = "LSP References (Trouble)",
-			},
-			-- 💡 ÖNERİ: Projedeki Quickfix listesini Trouble arayüzüyle açar
 			{
 				"<leader>xq",
-				"<cmd>Trouble qflist toggle<cr>",
-				desc = "Quickfix List (Trouble)",
+				"<cmd>Trouble qflist toggle focus=true<cr>",
+				desc = "Quickfix list",
+			},
+			{
+				"grr",
+				"<cmd>Trouble lsp_references toggle focus=true<cr>",
+				desc = "LSP references (Trouble)",
 			},
 		},
 	},
