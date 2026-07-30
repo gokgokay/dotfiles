@@ -1,8 +1,7 @@
 return {
-  -- Code Formatter
+	-- Code Formatter
 	{
 		"stevearc/conform.nvim",
-		event = { "VeryLazy" },
 		opts = {
 			default_format_opts = {
 				timeout_ms = 3000,
@@ -15,11 +14,10 @@ return {
 				css = { "prettier" },
 				yaml = { "prettier" },
 				markdown = { "prettier" },
-				graphql = { "prettier" },
-				svelte = { "prettier" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
+				sh = { "shfmt" },
+				bash = { "shfmt" },
 			},
 		},
 		keys = {
