@@ -2,7 +2,6 @@ return {
 	-- Better diagnostics
 	{
 		"folke/trouble.nvim",
-		cmd = "Trouble",
 		opts = {},
 		keys = {
 			{
