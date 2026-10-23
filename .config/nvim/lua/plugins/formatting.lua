@@ -18,6 +18,7 @@ return {
 				typescript = { "prettier" },
 				sh = { "shfmt" },
 				bash = { "shfmt" },
+				tmux = { "trim_whitespace" },
 			},
 		},
 		keys = {
