@@ -12,7 +12,7 @@ return {
 		keys = {
 			{ "<leader>qd", "<cmd>AutoSession delete<cr>", desc = "Delete session" },
 			{ "<leader>qf", "<cmd>AutoSession search<cr>", desc = "Find session" },
-			{ "<leader>qp", "<cmd>AutoSession deletePicker<cr>", desc = "Pick sesssion to delete" },
+			{ "<leader>qp", "<cmd>AutoSession deletePicker<cr>", desc = "Pick session to delete" },
 			{ "<leader>qr", "<cmd>AutoSession restore<cr>", desc = "Restore session" },
 			{ "<leader>qs", "<cmd>AutoSession save<cr>", desc = "Save session" },
 		},

@@ -21,11 +21,8 @@ end
 
 require("lazy").setup({
 	{ import = "plugins" },
-	{ import = "plugins.ui" },
-	{ import = "plugins.editor" },
-	{ import = "plugins.coding" },
-	{ import = "plugins.coding.language" },
-	{ import = "plugins.extras.coding" },
-	{ import = "plugins.extras.editor" },
-	{ import = "plugins.extras.ui" },
+	{ import = "plugins.language" },
 })
+
+-- Set theme
+vim.cmd.colorscheme("catppuccin")
