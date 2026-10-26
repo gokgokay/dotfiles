@@ -2,10 +2,28 @@ return {
 	-- Better diagnostics
 	{
 		"folke/trouble.nvim",
-		opts = {},
+		opts = {
+			modes = {
+				errors = {
+					mode = "diagnostics",
+					filter = { severity = vim.diagnostic.severity.ERROR },
+				},
+				symbols = {
+					win = { position = "bottom", size = 0.3 },
+				},
+				lsp = {
+					win = { position = "bottom", size = 0.3 },
+				},
+			},
+		},
 		keys = {
 			{
 				"<leader>xx",
+				"<cmd>Trouble errors toggle focus=true<cr>",
+				desc = "Errors",
+			},
+			{
+				"<leader>xb",
 				"<cmd>Trouble diagnostics toggle filter.buf=0 focus=true<cr>",
 				desc = "Buffer diagnostics",
 			},
@@ -20,9 +38,14 @@ return {
 				desc = "Quickfix list",
 			},
 			{
-				"grr",
-				"<cmd>Trouble lsp_references toggle focus=true<cr>",
-				desc = "LSP references (Trouble)",
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=true<cr>",
+				desc = "Symbols outline",
+			},
+			{
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=true<cr>",
+				desc = "LSP definitions",
 			},
 		},
 	},
