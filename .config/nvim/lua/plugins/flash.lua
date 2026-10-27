@@ -2,6 +2,7 @@ return {
 	-- Quick search and jump
 	{
 		"folke/flash.nvim",
+		event = "VeryLazy",
 		keys = {
 			{
 				"s",
@@ -30,6 +31,18 @@ return {
 					require("flash").remote()
 				end,
 				desc = "Flash remote",
+			},
+			{
+				"gl",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump({
+						search = { mode = "search", max_length = 0 },
+						label = { after = { 0, 0 } },
+						pattern = "^",
+					})
+				end,
+				desc = "Go to line",
 			},
 		},
 	},
